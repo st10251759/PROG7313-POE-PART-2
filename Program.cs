@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ST10251759_PROG7313_POE_PART_2.Data;
+
 namespace ST10251759_PROG7313_POE_PART_2
 {
     public class Program
@@ -8,6 +11,10 @@ namespace ST10251759_PROG7313_POE_PART_2
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //Adding DB Context builder services with options
+            builder.Services.AddDbContext<Prog7311DbContext>(options =>
+                       options.UseSqlServer(builder.Configuration.GetConnectionString("Prog7311DEV")));
 
             var app = builder.Build();
 
