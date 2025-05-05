@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ST10251759_PROG7313_POE_PART_2.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace ST10251759_PROG7313_POE_PART_2
 {
@@ -15,6 +16,8 @@ namespace ST10251759_PROG7313_POE_PART_2
             //Adding DB Context builder services with options
             builder.Services.AddDbContext<Prog7311DbContext>(options =>
                        options.UseSqlServer(builder.Configuration.GetConnectionString("Prog7311DEV")));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Prog7311DbContext>();
 
             var app = builder.Build();
 
