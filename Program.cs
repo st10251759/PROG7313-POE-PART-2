@@ -17,7 +17,11 @@ namespace ST10251759_PROG7313_POE_PART_2
             builder.Services.AddDbContext<Prog7311DbContext>(options =>
                        options.UseSqlServer(builder.Configuration.GetConnectionString("Prog7311DEV")));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Prog7311DbContext>();
+            //Added service for Authorization for Role based Access
+            builder.Services.AddDefaultIdentity<IdentityUser>().AddDefaultTokenProviders()
+                           .AddRoles<IdentityRole>()
+                           .AddEntityFrameworkStores<Prog7311DbContext>();
+
 
             var app = builder.Build();
 
@@ -34,7 +38,10 @@ namespace ST10251759_PROG7313_POE_PART_2
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
