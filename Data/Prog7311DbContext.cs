@@ -11,6 +11,7 @@ namespace ST10251759_PROG7313_POE_PART_2.Data
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Product> Products { get; set; }
 
 
     }
