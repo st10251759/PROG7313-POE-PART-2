@@ -1,0 +1,75 @@
+﻿<!-- Views/Employee/ProductDetails.cshtml -->
+@model ST10251759_PROG7313_POE_PART_2.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h1 class="display-5">Product Details</h1>
+            <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="bg-white p-4 rounded shadow">
+                    <div class="row">
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            @if (!string.IsNullOrEmpty(Model.ImageUrlPath))
+                            {
+                                <img src="@Model.ImageUrlPath" alt="@Model.Name" class="img-fluid rounded" style="max-height: 400px; width: 100%; object-fit: cover;">
+                            }
+                            else
+                            {
+                                <img src="/img/placeholder.jpg" alt="@Model.Name" class="img-fluid rounded" style="max-height: 400px; width: 100%; object-fit: cover;">
+                            }
+                        </div>
+                        <div class="col-md-7">
+                            <h2 class="mb-3">@Model.Name</h2>
+
+                            <div class="mb-4">
+                                <h5 class="text-primary mb-2">Product Information</h5>
+                                <dl class="row">
+                                    <dt class="col-sm-4">Category:</dt>
+                                    <dd class="col-sm-8">@Model.Category</dd>
+
+                                    <dt class="col-sm-4">Production Date:</dt>
+                                    <dd class="col-sm-8">@Model.ProductionDate.ToShortDateString()</dd>
+                                </dl>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="text-primary mb-2">Supplier Information</h5>
+                                <dl class="row">
+                                    <dt class="col-sm-4">Farmer:</dt>
+                                    <dd class="col-sm-8">@Model.User.Firstname @Model.User.Lastname</dd>
+
+                                    <dt class="col-sm-4">Contact Number:</dt>
+                                    <dd class="col-sm-8">@Model.User.PhoneNumber</dd>
+
+                                    <dt class="col-sm-4">Email:</dt>
+                                    <dd class="col-sm-8">@Model.User.Email</dd>
+
+                                    <dt class="col-sm-4">Location:</dt>
+                                    <dd class="col-sm-8">@Model.User.Location</dd>
+                                </dl>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="text-primary mb-2">Description</h5>
+                                <p>@Model.Description</p>
+                            </div>
+
+                            <div class="mt-4">
+                                <a asp-action="Products" class="btn btn-secondary">Back to Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
