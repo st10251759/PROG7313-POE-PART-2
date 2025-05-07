@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #34AD54;
-    --secondary: #FF9933;
+    --primary: #00674b;
+    --secondary: #00AB66;
     --light: #F6FFF2;
     --dark: #263A4F;
 }
@@ -49,6 +49,20 @@
     border-radius: 0;
     z-index: 99;
 }
+
+.btn-login {
+    background-color: #00AB66 !important;
+    padding: 10px !important;
+    border: 2px solid #fff !important;
+    border-radius: 10px !important;
+}
+
+    .btn-login:hover {
+        background-color: #fff !important;
+        color: #00AB66 !important;
+        border: 3px solid #00AB66 !important;
+        border-radius: 10px !important;
+    }
 
 .navbar-dark .navbar-nav .nav-link {
     padding: 30px 15px;
@@ -183,7 +197,6 @@
     height: 55%;
     bottom: 0;
     left: 0;
-    background: url(../img/bg-product-1.png) left bottom no-repeat, url(../img/bg-product-2.png) right bottom no-repeat;
     background-size: contain;
     background-color: var(--primary);
     z-index: -1;
@@ -216,7 +229,7 @@
 }
 
 .bg-testimonial {
-    background: url(../img/testimonial.jpg) top center no-repeat;
+    background: url(../img/testimonial.png) top center no-repeat;
     background-size: cover;
 }
 
@@ -283,7 +296,7 @@
 }
 
 .bg-footer {
-    background: linear-gradient(rgba(52, 173, 84, .7), rgba(52, 173, 84, .7)), url(../img/footer.png) center bottom no-repeat;
+    background: linear-gradient(rgba(0, 103, 75, 0.85), rgba(0, 103, 75, 0.85)), url(../img/footer.png) center bottom no-repeat;
     background-size: contain;
 }
 
