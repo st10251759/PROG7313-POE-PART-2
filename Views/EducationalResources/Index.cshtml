@@ -1,0 +1,976 @@
+﻿@{
+    ViewData["Title"] = "Educational & Training Resources";
+}
+
+<!-- Topbar Start -->
+<div class="container-fluid px-5 d-none d-lg-block">
+    <div class="row gx-5 py-3 align-items-center">
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-start">
+                <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
+                <h2 class="mb-0">+031 123 6789</h2>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="index.html" class="navbar-brand ms-lg-5">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Agri-Energy</span>Connect</h1>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-end">
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none">
+        <h1 class="m-0 display-4 text-secondary"><span class="text-white">Agri</span>Energy</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav py-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="/farminghub" class="nav-item nav-link">Farming Hub</a>
+            <a href="/marketplace" class="nav-item nav-link">Energy Marketplace</a>
+            <a href="/educationalresources" class="nav-item nav-link active">Training & Resources</a>
+            <a href="/projectfunding" class="nav-item nav-link">Projects & Funding</a>
+            @if (User.IsInRole("Farmer"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Farmer Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">My Products</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">My Profile</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Farmers</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">Manage Products</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Employees</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5" style="background: linear-gradient(rgba(0, 103, 75, .9), rgba(0, 103, 75, .9)), url(/img/carousel-2.jpg) center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Educational & Training Resources</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Training & Resources</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Introduction Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h6 class="text-primary text-uppercase">Knowledge is Power</h6>
+                    <h1 class="display-5 mb-3">Learn. Implement. Transform.</h1>
+                    <div class="divider-green mb-4" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+                </div>
+                <p class="mb-4">Expand your knowledge and skills with our comprehensive educational resources designed specifically for farmers and agricultural professionals. Our courses, webinars, and workshops cover everything from the basics of green energy technologies to advanced implementation strategies for farms of all sizes.</p>
+                <p class="mb-4">Whether you're just starting your sustainable farming journey or looking to enhance your existing green energy systems, our expert-led training will provide you with practical, actionable knowledge you can apply immediately.</p>
+                <div class="d-flex align-items-center">
+                    <a href="#courses" class="btn btn-primary py-3 px-5 me-3">Explore Courses</a>
+                    <a href="#webinars" class="btn btn-outline-secondary py-3 px-5">Upcoming Webinars</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative overflow-hidden rounded shadow-lg" style="height: 500px;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="img/carousel-1.jpg" alt="Educational Resources" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 103, 75, .2);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <div class="bg-white rounded-pill text-primary px-4 py-1 mb-3 d-inline-block">Expert-Led Training</div>
+                                    <h3 class="text-white text-shadow">Building Sustainable Skills for the Modern Farmer</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Introduction End -->
+<!-- Benefits Section Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Why Learn With Us</h6>
+            <h1 class="display-5 mb-2">Benefits of Our Educational Program</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Designed for busy agricultural professionals with practical implementation in mind.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-user-tie text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Expert Instructors</h4>
+                    <p class="mb-0">Learn from industry professionals with real-world experience in agricultural energy implementation and sustainable farming practices.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-tools text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Practical Focus</h4>
+                    <p class="mb-0">Every course emphasizes real-world application with actionable steps, case studies, and implementation guides for your specific farming context.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-laptop text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Flexible Learning</h4>
+                    <p class="mb-0">Access content anytime, anywhere with our mobile-friendly platform. Learn at your own pace with on-demand courses and recorded webinars.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-users text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Community Support</h4>
+                    <p class="mb-0">Connect with fellow farmers and energy professionals to share insights, ask questions, and collaborate on implementation challenges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Benefits Section End -->
+<!-- Course Categories Start -->
+<div class="container-fluid py-5" id="courses">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Learn At Your Own Pace</h6>
+            <h1 class="display-5 mb-2">Online Courses</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Comprehensive courses designed to help you implement renewable energy solutions on your farm.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/course-1.png" alt="Solar Energy Fundamentals">
+                        <div class="course-level bg-primary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Beginner
+                        </div>
+                        <div class="course-duration bg-white text-primary px-3 py-1 rounded-pill position-absolute" style="top: 15px; right: 15px;">
+                            <i class="fa fa-clock me-1"></i> 6 Hours
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="course-category text-primary fw-bold">
+                                <i class="fa fa-sun me-1"></i> Solar Energy
+                            </div>
+                            <div class="course-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span class="ms-1 text-muted">(4.5)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Solar Energy Fundamentals for Farmers</h4>
+                        <p class="text-muted mb-4">Learn the basics of solar technology, farm applications, and fundamental concepts needed to assess solar potential for your agricultural operation.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="course-features">
+                                <span class="d-block mb-1"><i class="fa fa-video text-primary me-2"></i> 24 Lessons</span>
+                                <span class="d-block"><i class="fa fa-file-alt text-primary me-2"></i> 12 Resources</span>
+                            </div>
+                            <div class="course-price fw-bold fs-5">
+                                FREE
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary py-2"><i class="fa fa-sign-in-alt me-2"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/course-1.png" alt="Wind Energy Systems">
+                        <div class="course-level bg-success text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Intermediate
+                        </div>
+                        <div class="course-duration bg-white text-primary px-3 py-1 rounded-pill position-absolute" style="top: 15px; right: 15px;">
+                            <i class="fa fa-clock me-1"></i> 8 Hours
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="course-category text-primary fw-bold">
+                                <i class="fa fa-wind me-1"></i> Wind Energy
+                            </div>
+                            <div class="course-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="ms-1 text-muted">(4.9)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Wind Energy Systems for Agricultural Applications</h4>
+                        <p class="text-muted mb-4">Explore wind power solutions for farms, including site assessment, turbine selection, installation considerations, and maintenance procedures.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="course-features">
+                                <span class="d-block mb-1"><i class="fa fa-video text-primary me-2"></i> 32 Lessons</span>
+                                <span class="d-block"><i class="fa fa-file-alt text-primary me-2"></i> 15 Resources</span>
+                            </div>
+                            <div class="course-price fw-bold fs-5">
+                                R499
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary py-2"><i class="fa fa-sign-in-alt me-2"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/course-1.png" alt="Biogas Production">
+                        <div class="course-level bg-warning text-dark px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Advanced
+                        </div>
+                        <div class="course-duration bg-white text-primary px-3 py-1 rounded-pill position-absolute" style="top: 15px; right: 15px;">
+                            <i class="fa fa-clock me-1"></i> 10 Hours
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="course-category text-primary fw-bold">
+                                <i class="fa fa-recycle me-1"></i> Biogas Energy
+                            </div>
+                            <div class="course-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span class="ms-1 text-muted">(4.7)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Biogas Production from Agricultural Waste</h4>
+                        <p class="text-muted mb-4">Master the process of converting farm waste into valuable biogas energy, covering digester design, feedstock management, and system optimization.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="course-features">
+                                <span class="d-block mb-1"><i class="fa fa-video text-primary me-2"></i> 40 Lessons</span>
+                                <span class="d-block"><i class="fa fa-file-alt text-primary me-2"></i> 20 Resources</span>
+                            </div>
+                            <div class="course-price fw-bold fs-5">
+                                R699
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary py-2"><i class="fa fa-sign-in-alt me-2"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/course-1.png" alt="Energy Storage">
+                        <div class="course-level bg-primary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Intermediate
+                        </div>
+                        <div class="course-duration bg-white text-primary px-3 py-1 rounded-pill position-absolute" style="top: 15px; right: 15px;">
+                            <i class="fa fa-clock me-1"></i> 7 Hours
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="course-category text-primary fw-bold">
+                                <i class="fa fa-battery-full me-1"></i> Energy Storage
+                            </div>
+                            <div class="course-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="ms-1 text-muted">(4.8)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Farm Energy Storage Systems 101</h4>
+                        <p class="text-muted mb-4">Learn about battery technologies, sizing calculations, system integration, and optimizing storage solutions for agricultural operations.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="course-features">
+                                <span class="d-block mb-1"><i class="fa fa-video text-primary me-2"></i> 28 Lessons</span>
+                                <span class="d-block"><i class="fa fa-file-alt text-primary me-2"></i> 14 Resources</span>
+                            </div>
+                            <div class="course-price fw-bold fs-5">
+                                R399
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary py-2"><i class="fa fa-sign-in-alt me-2"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/course-1.png" alt="Solar Water Heating">
+                        <div class="course-level bg-primary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Beginner
+                        </div>
+                        <div class="course-duration bg-white text-primary px-3 py-1 rounded-pill position-absolute" style="top: 15px; right: 15px;">
+                            <i class="fa fa-clock me-1"></i> 5 Hours
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="course-category text-primary fw-bold">
+                                <i class="fa fa-temperature-high me-1"></i> Solar Thermal
+                            </div>
+                            <div class="course-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span class="ms-1 text-muted">(4.4)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Solar Water Heating for Agricultural Processes</h4>
+                        <p class="text-muted mb-4">Discover cost-effective solar thermal solutions for farm operations requiring hot water, including system design and installation basics.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="course-features">
+                                <span class="d-block mb-1"><i class="fa fa-video text-primary me-2"></i> 20 Lessons</span>
+                                <span class="d-block"><i class="fa fa-file-alt text-primary me-2"></i> 10 Resources</span>
+                            </div>
+                            <div class="course-price fw-bold fs-5">
+                                FREE
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary py-2"><i class="fa fa-sign-in-alt me-2"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="course-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/course-1.png" alt="Farm Energy Auditing">
+                        <div class="course-level bg-success text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Intermediate
+                        </div>
+                        <div class="course-duration bg-white text-primary px-3 py-1 rounded-pill position-absolute" style="top: 15px; right: 15px;">
+                            <i class="fa fa-clock me-1"></i> 9 Hours
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="course-category text-primary fw-bold">
+                                <i class="fa fa-search me-1"></i> Energy Auditing
+                            </div>
+                            <div class="course-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="ms-1 text-muted">(5.0)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Farm Energy Auditing and Efficiency</h4>
+                        <p class="text-muted mb-4">Learn to conduct comprehensive energy assessments of your farm, identify efficiency opportunities, and create optimization strategies.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="course-features">
+                                <span class="d-block mb-1"><i class="fa fa-video text-primary me-2"></i> 35 Lessons</span>
+                                <span class="d-block"><i class="fa fa-file-alt text-primary me-2"></i> 18 Resources</span>
+                            </div>
+                            <div class="course-price fw-bold fs-5">
+                                R599
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary py-2"><i class="fa fa-sign-in-alt me-2"></i> Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary py-3 px-5">View All Courses</a>
+        </div>
+    </div>
+</div>
+<!-- Course Categories End -->
+<!-- Upcoming Webinars Start -->
+<div class="container-fluid py-5 bg-light" id="webinars">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Live Learning</h6>
+            <h1 class="display-5 mb-2">Upcoming Webinars & Workshops</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Join our interactive online sessions led by industry experts and connect with other farmers.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="webinar-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid h-100" src="img/webinar-1.png" alt="Solar Installation" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="webinar-date text-primary fw-bold">
+                                        <i class="fa fa-calendar-alt me-1"></i> May 15, 2025
+                                    </div>
+                                    <div class="webinar-time text-muted">
+                                        <i class="fa fa-clock me-1"></i> 14:00 - 16:00 SAST
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Solar Installation Best Practices for South African Farms</h4>
+                                <p class="text-muted mb-3">Join solar expert Johan Pretorius as he shares practical installation techniques, common pitfalls to avoid, and optimization strategies for South African climate conditions.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="webinar-presenter d-flex align-items-center">
+                                        <img class="rounded-circle me-2" src="img/testimonial-1.jpg" alt="Presenter" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <span>Johan Pretorius</span>
+                                    </div>
+                                    <div class="webinar-price fw-bold">
+                                        FREE
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-3">
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-calendar-plus me-2"></i> Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="webinar-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid h-100" src="img/webinar-1.png" alt="Wind Energy" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="webinar-date text-primary fw-bold">
+                                        <i class="fa fa-calendar-alt me-1"></i> May 22, 2025
+                                    </div>
+                                    <div class="webinar-time text-muted">
+                                        <i class="fa fa-clock me-1"></i> 10:00 - 12:00 SAST
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Maximizing ROI from Wind Energy on Large Farms</h4>
+                                <p class="text-muted mb-3">This interactive workshop will cover wind resource assessment, turbine selection criteria, financial modeling, and maintenance strategies for agricultural wind energy systems.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="webinar-presenter d-flex align-items-center">
+                                        <img class="rounded-circle me-2" src="img/testimonial-2.jpg" alt="Presenter" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <span>Dr. Sarah Windfield</span>
+                                    </div>
+                                    <div class="webinar-price fw-bold">
+                                        R299
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-3">
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-calendar-plus me-2"></i> Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="webinar-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid h-100" src="img/webinar-1.png" alt="Biogas Systems" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="webinar-date text-primary fw-bold">
+                                        <i class="fa fa-calendar-alt me-1"></i> June 5, 2025
+                                    </div>
+                                    <div class="webinar-time text-muted">
+                                        <i class="fa fa-clock me-1"></i> 15:00 - 17:30 SAST
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Biogas Systems for Livestock Farms: A Practical Guide</h4>
+                                <p class="text-muted mb-3">Discover how to convert livestock waste into valuable energy with this hands-on workshop covering digester setup, feedstock preparation, and system management for maximum gas production.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="webinar-presenter d-flex align-items-center">
+                                        <img class="rounded-circle me-2" src="img/testimonial-3.jpg" alt="Presenter" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <span>Themba Moyo</span>
+                                    </div>
+                                    <div class="webinar-price fw-bold">
+                                        R299
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-3">
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-calendar-plus me-2"></i> Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="webinar-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid h-100" src="img/webinar-1.png" alt="Integrated Systems" style="object-fit: cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="webinar-date text-primary fw-bold">
+                                        <i class="fa fa-calendar-alt me-1"></i> June 12, 2025
+                                    </div>
+                                    <div class="webinar-time text-muted">
+                                        <i class="fa fa-clock me-1"></i> 13:00 - 15:00 SAST
+                                    </div>
+                                </div>
+                                <h4 class="mb-3">Integrating Multiple Green Energy Systems on Your Farm</h4>
+                                <p class="text-muted mb-3">Learn how to design and implement a comprehensive energy strategy that combines solar, wind, and storage technologies for maximum resilience and efficiency.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="webinar-presenter d-flex align-items-center">
+                                        <img class="rounded-circle me-2" src="img/testimonial-1.jpg" alt="Presenter" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <span>Prof. James Marais</span>
+                                    </div>
+                                    <div class="webinar-price fw-bold">
+                                        R349
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-3">
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-calendar-plus me-2"></i> Register Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary py-3 px-5">View All Webinars</a>
+        </div>
+    </div>
+</div>
+<!-- Upcoming Webinars End -->
+<!-- Educational Materials Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Free Resources</h6>
+            <h1 class="display-5 mb-2">Educational Materials</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Access our library of guides, case studies, and implementation manuals for sustainable farming practices.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="resource-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="Implementation Guide" style="height: 200px; object-fit: cover;">
+                        <div class="resource-type bg-primary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            <i class="fa fa-file-pdf me-1"></i> Guide
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="mb-3">Solar Irrigation Implementation Guide</h4>
+                        <p class="text-muted mb-4">Comprehensive step-by-step manual for planning, installing, and maintaining solar irrigation systems for farms of various sizes.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="resource-info text-muted">
+                                <i class="fa fa-download text-primary me-1"></i> 1,245 Downloads
+                            </div>
+                            <div class="resource-format">
+                                <span class="badge bg-light text-primary">PDF • 48 Pages</span>
+                            </div>
+                        </div>
+                        <div class="d-grid mt-3">
+                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-download me-2"></i> Download Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="resource-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/blog-2.jpg" alt="Case Study" style="height: 200px; object-fit: cover;">
+                        <div class="resource-type bg-success text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            <i class="fa fa-file-alt me-1"></i> Case Study
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="mb-3">Wind Energy Success Story: Western Cape Dairy Farm</h4>
+                        <p class="text-muted mb-4">Detailed analysis of how a 200-hectare dairy farm achieved energy independence through strategic wind turbine implementation.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="resource-info text-muted">
+                                <i class="fa fa-download text-primary me-1"></i> 895 Downloads
+                            </div>
+                            <div class="resource-format">
+                                <span class="badge bg-light text-primary">PDF • 32 Pages</span>
+                            </div>
+                        </div>
+                        <div class="d-grid mt-3">
+                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-download me-2"></i> Download Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="resource-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/blog-3.jpg" alt="Toolkit" style="height: 200px; object-fit: cover;">
+                        <div class="resource-type bg-info text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            <i class="fa fa-tools me-1"></i> Toolkit
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="mb-3">Farm Energy Audit Toolkit Cert Course</h4>
+                        <p class="text-muted mb-4">Complete set of worksheets, calculators, and checklists to assess your farm's energy usage and identify efficiency opportunities.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="resource-info text-muted">
+                                <i class="fa fa-download text-primary me-1"></i> 1,750 Downloads
+                            </div>
+                            <div class="resource-format">
+                                <span class="badge bg-light text-primary">ZIP • Multiple Files</span>
+                            </div>
+                        </div>
+                        <div class="d-grid mt-3">
+                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-download me-2"></i> Download Toolkit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary py-3 px-5">View All Resources</a>
+        </div>
+    </div>
+</div>
+<!-- Educational Materials End -->
+<!-- Expert Instructors Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Learn From The Best</h6>
+            <h1 class="display-5 mb-2">Our Expert Instructors</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Meet our team of industry professionals with extensive practical experience in agricultural energy systems.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item bg-white rounded-3 overflow-hidden shadow-hover text-center h-100">
+                    <div class="team-img position-relative">
+                        <img class="img-fluid" src="img/testimonial-1.jpg" alt="Johan Pretorius">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h5>Johan Pretorius</h5>
+                        <span class="text-primary">Solar Energy Specialist</span>
+                        <p class="mt-3 mb-0">15+ years of experience designing and implementing solar energy systems for farms across South Africa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item bg-white rounded-3 overflow-hidden shadow-hover text-center h-100">
+                    <div class="team-img position-relative">
+                        <img class="img-fluid" src="img/testimonial-2.jpg" alt="Dr. Sarah Windfield">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h5>Dr. Sarah Windfield</h5>
+                        <span class="text-primary">Wind Energy Engineer</span>
+                        <p class="mt-3 mb-0">Wind energy specialist with a Ph.D. in renewable energy systems and experience with agricultural applications.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item bg-white rounded-3 overflow-hidden shadow-hover text-center h-100">
+                    <div class="team-img position-relative">
+                        <img class="img-fluid" src="img/testimonial-2.jpg" alt="Themba Moyo">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h5>Themba Moyo</h5>
+                        <span class="text-primary">Biogas Systems Expert</span>
+                        <p class="mt-3 mb-0">Specializes in biogas system design for livestock operations with over 20 successful farm installations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item bg-white rounded-3 overflow-hidden shadow-hover text-center h-100">
+                    <div class="team-img position-relative">
+                        <img class="img-fluid" src="img/testimonial-1.jpg" alt="Prof. James Marais">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h5>Prof. James Marais</h5>
+                        <span class="text-primary">Agricultural Energy Systems</span>
+                        <p class="mt-3 mb-0">Professor of Sustainable Agriculture with expertise in integrated energy systems for farm applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Expert Instructors End -->
+<!-- Testimonials Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Student Success</h6>
+            <h1 class="display-5 mb-2">What Our Students Say</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Hear from farmers who have transformed their operations through our educational programs.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="testimonial-item bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle flex-shrink-0" src="img/testimonial-1.jpg" alt="Farmer" style="width: 70px; height: 70px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">David Nkosi</h5>
+                            <p class="mb-0 text-muted">Crop Farmer, Mpumalanga</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating text-warning mb-3">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="testimonial-text mb-0">"The Solar Energy Fundamentals course gave me the knowledge and confidence to implement a solar irrigation system on my farm. The practical focus meant I could start applying what I learned immediately. Within six months, I reduced my energy costs by over 60%."</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="testimonial-item bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle flex-shrink-0" src="img/testimonial-2.jpg" alt="Farmer" style="width: 70px; height: 70px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Lerato Molefe</h5>
+                            <p class="mb-0 text-muted">Dairy Farmer, Free State</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating text-warning mb-3">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text mb-0">"The biogas workshop transformed how we handle waste on our dairy farm. The step-by-step guidance helped us build a system that now powers our milk processing equipment. The instructors were knowledgeable and provided ongoing support even after the course ended."</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="testimonial-item bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle flex-shrink-0" src="img/testimonial-1.jpg" alt="Farmer" style="width: 70px; height: 70px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Richard van der Merwe</h5>
+                            <p class="mb-0 text-muted">Mixed Farm, Western Cape</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating text-warning mb-3">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="testimonial-text mb-0">"After completing the Farm Energy Auditing course, I discovered several efficiency opportunities I would have never noticed. The comprehensive approach and practical tools provided helped me reduce energy waste and implement a targeted solar solution that matched our exact needs."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonials End -->
+
+<style>
+.text-shadow {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.shadow-hover {
+    transition: all 0.3s ease;
+}
+
+    .shadow-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+.course-level, .course-duration, .resource-type {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.course-features, .resource-info {
+    font-size: 14px;
+}
+
+.team-img {
+    overflow: hidden;
+}
+
+    .team-img img {
+        transition: all 0.5s ease;
+    }
+
+.team-item:hover .team-img img {
+    transform: scale(1.1);
+}
+
+.team-social {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 103, 75, 0.8);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.team-item:hover .team-social {
+    opacity: 1;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #00674b;
+    background-color: #F6FFF2;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button:focus {
+    border-color: #00AB66;
+    box-shadow: 0 0 0 0.25rem rgba(0, 171, 102, 0.25);
+}
+</style>
+
+                    @section Scripts {
+        <script>
+    // Add animation to course cards on scroll
+    window.addEventListener('scroll', function () {
+        const courseCards = document.querySelectorAll('.course-card');
+        courseCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.8) {
+                card.classList.add('fadeInUp');
+            }
+        });
+    });
+
+    // Handle custom training form submission
+    const customTrainingForm = document.querySelector('.bg-white.rounded-3.p-4.p-sm-5 form');
+    if (customTrainingForm) {
+        customTrainingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Your training request has been submitted. Our education team will contact you shortly!');
+            this.reset();
+        });
+    }
+
+    // Handle newsletter subscription
+    const newsletterForm = document.querySelector('.bg-light.rounded-3.p-4.p-sm-5 form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our educational newsletter! Please check your email to confirm your subscription.');
+            this.reset();
+        });
+    }
+    </script>
+                    }
