@@ -1,0 +1,1035 @@
+﻿@{
+    ViewData["Title"] = "Green Energy Marketplace";
+}
+
+<!-- Topbar Start -->
+<div class="container-fluid px-5 d-none d-lg-block">
+    <div class="row gx-5 py-3 align-items-center">
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-start">
+                <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
+                <h2 class="mb-0">+031 123 6789</h2>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="index.html" class="navbar-brand ms-lg-5">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Agri-Energy</span>Connect</h1>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-end">
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none">
+        <h1 class="m-0 display-4 text-secondary"><span class="text-white">Agri</span>Energy</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav py-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="/farminghub" class="nav-item nav-link">Farming Hub</a>
+            <a href="/marketplace" class="nav-item nav-link active">Energy Marketplace</a>
+            <a href="/" class="nav-item nav-link">Training & Resources</a>
+            <a href="/" class="nav-item nav-link">Projects & Funding</a>
+            @if (User.IsInRole("Farmer"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Farmer Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">My Products</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">My Profile</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Farmers</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">Manage Products</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Employees</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5" style="background: linear-gradient(rgba(0, 103, 75, .9), rgba(0, 103, 75, .9)), url(/img/carousel-2.jpg) center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Green Energy Marketplace</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Energy Marketplace</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Marketplace Introduction Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h6 class="text-primary text-uppercase">Welcome to our</h6>
+                    <h1 class="display-5 mb-3">Green Energy Solutions for Agriculture</h1>
+                    <div class="divider-green mb-4" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+                </div>
+                <p class="mb-4">Discover tailored renewable energy technologies designed specifically for agricultural applications. Our marketplace connects farmers with trusted providers of sustainable energy solutions to reduce costs, minimize environmental impact, and build more resilient farm operations.</p>
+                <p class="mb-4">Compare different technologies, read reviews from fellow farmers, and find the perfect green energy system for your specific agricultural needs.</p>
+                <div class="d-flex align-items-center">
+                    <a href="#products" class="btn btn-primary py-3 px-5 me-3">Explore Solutions</a>
+                    <a href="#comparison" class="btn btn-outline-secondary py-3 px-5">Compare Technologies</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative overflow-hidden rounded shadow-lg" style="height: 500px;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="img/carousel-2.jpg" alt="Green Energy Solutions" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 103, 75, .2);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <div class="bg-white rounded-pill text-primary px-4 py-1 mb-3 d-inline-block">Sustainable Power</div>
+                                    <h3 class="text-white text-shadow">Powering Modern Agriculture with Renewable Energy</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Marketplace Introduction End -->
+<!-- Benefits Section Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Why Choose Green Energy</h6>
+            <h1 class="display-5 mb-2">Benefits for Your Farm</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Sustainable energy solutions offer numerous advantages for modern agricultural operations.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-coins text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Cost Savings</h4>
+                    <p class="mb-0">Reduce electricity and fuel expenses with renewable energy systems that provide sustainable power for years with minimal operational costs.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-leaf text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Environmental Impact</h4>
+                    <p class="mb-0">Significantly reduce your carbon footprint and contribute to fighting climate change with clean, emissions-free energy production.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-shield-alt text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Energy Independence</h4>
+                    <p class="mb-0">Gain reliability and resilience against utility outages with on-site power generation that ensures continuous operations.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="service-item bg-white rounded-3 p-4 h-100 shadow-hover">
+                    <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4" style="width: 65px; height: 65px;">
+                        <i class="fa fa-chart-line text-white fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Financial Incentives</h4>
+                    <p class="mb-0">Take advantage of government rebates, tax incentives, and financing options designed specifically for agricultural renewable energy projects.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Benefits Section End -->
+<!-- Products Category Start -->
+<div class="container-fluid py-5" id="products">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Our Selection</h6>
+            <h1 class="display-5 mb-2">Green Energy Solutions</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Explore our curated collection of renewable energy systems designed specifically for agricultural applications.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/product-1.png" alt="Solar Irrigation System">
+                        <div class="product-tag bg-primary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Bestseller
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="product-category text-primary fw-bold">
+                                <i class="fa fa-sun me-1"></i> Solar Power
+                            </div>
+                            <div class="product-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span class="ms-1 text-muted">(4.5)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Solar-Powered Irrigation System</h4>
+                        <p class="text-muted mb-4">Complete solar solution for efficient water management, including panels, pump controllers, and monitoring systems for farms of all sizes.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="product-specs">
+                                <span class="d-block mb-1"><i class="fa fa-bolt text-primary me-2"></i> 5-25kW capacity</span>
+                                <span class="d-block"><i class="fa fa-tint text-primary me-2"></i> Pumps up to 100,000L/day</span>
+                            </div>
+                            <div class="product-price fw-bold fs-5">
+                                From R250,000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="fa fa-balance-scale me-1"></i> Compare</a>
+                            <a href="#" class="btn btn-primary flex-grow-1"><i class="fa fa-info-circle me-1"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/product-2.png" alt="Wind Turbine System">
+                        <div class="product-tag bg-success text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Eco-Choice
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="product-category text-primary fw-bold">
+                                <i class="fa fa-wind me-1"></i> Wind Power
+                            </div>
+                            <div class="product-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="ms-1 text-muted">(5.0)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Agricultural Wind Turbine System</h4>
+                        <p class="text-muted mb-4">Robust wind energy solution including turbine, inverter, and battery storage, designed for farms with consistent wind patterns.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="product-specs">
+                                <span class="d-block mb-1"><i class="fa fa-bolt text-primary me-2"></i> 10-50kW capacity</span>
+                                <span class="d-block"><i class="fa fa-battery-full text-primary me-2"></i> Optional storage system</span>
+                            </div>
+                            <div class="product-price fw-bold fs-5">
+                                From R450,000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="fa fa-balance-scale me-1"></i> Compare</a>
+                            <a href="#" class="btn btn-primary flex-grow-1"><i class="fa fa-info-circle me-1"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/product-3.png" alt="Biogas Energy System">
+                        <div class="product-tag bg-secondary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="product-category text-primary fw-bold">
+                                <i class="fa fa-recycle me-1"></i> Biogas
+                            </div>
+                            <div class="product-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span class="ms-1 text-muted">(4.3)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Biogas Production System</h4>
+                        <p class="text-muted mb-4">Complete biogas system for converting agricultural waste into usable energy, including digester, gas storage, and generator units.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="product-specs">
+                                <span class="d-block mb-1"><i class="fa fa-bolt text-primary me-2"></i> 5-30kW capacity</span>
+                                <span class="d-block"><i class="fa fa-fire text-primary me-2"></i> Processes 2-10 tons/day</span>
+                            </div>
+                            <div class="product-price fw-bold fs-5">
+                                From R350,000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="fa fa-balance-scale me-1"></i> Compare</a>
+                            <a href="#" class="btn btn-primary flex-grow-1"><i class="fa fa-info-circle me-1"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/product-5.png" alt="Solar Energy Storage System">
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="product-category text-primary fw-bold">
+                                <i class="fa fa-battery-full me-1"></i> Energy Storage
+                            </div>
+                            <div class="product-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="ms-1 text-muted">(4.9)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Agricultural Energy Storage System</h4>
+                        <p class="text-muted mb-4">Advanced battery storage solution for farms, providing backup power and energy optimization with solar or grid integration.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="product-specs">
+                                <span class="d-block mb-1"><i class="fa fa-bolt text-primary me-2"></i> 10-100kWh capacity</span>
+                                <span class="d-block"><i class="fa fa-clock text-primary me-2"></i> 10+ year lifespan</span>
+                            </div>
+                            <div class="product-price fw-bold fs-5">
+                                From R180,000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="fa fa-balance-scale me-1"></i> Compare</a>
+                            <a href="#" class="btn btn-primary flex-grow-1"><i class="fa fa-info-circle me-1"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/product-6.png" alt="Solar Water Heater">
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="product-category text-primary fw-bold">
+                                <i class="fa fa-temperature-high me-1"></i> Water Heating
+                            </div>
+                            <div class="product-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
+                                <span class="ms-1 text-muted">(4.4)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Agricultural Solar Water Heatin System</h4>
+                        <p class="text-muted mb-4">High-capacity solar thermal system for agricultural processes requiring hot water, including sanitization and livestock facilities.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="product-specs">
+                                <span class="d-block mb-1"><i class="fa fa-temperature-high text-primary me-2"></i> Up to 95°C water</span>
+                                <span class="d-block"><i class="fa fa-tint text-primary me-2"></i> 500-5000L capacity</span>
+                            </div>
+                            <div class="product-price fw-bold fs-5">
+                                From R85,000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="fa fa-balance-scale me-1"></i> Compare</a>
+                            <a href="#" class="btn btn-primary flex-grow-1"><i class="fa fa-info-circle me-1"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card bg-white rounded-3 overflow-hidden shadow-hover h-100">
+                    <div class="position-relative">
+                        <img class="img-fluid w-100" src="img/product-7.png" alt="Smart Farm Energy System">
+                        <div class="product-tag bg-info text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="product-category text-primary fw-bold">
+                                <i class="fa fa-microchip me-1"></i> Smart Systems
+                            </div>
+                            <div class="product-rating text-warning">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="ms-1 text-muted">(4.8)</span>
+                            </div>
+                        </div>
+                        <h4 class="mb-3">Smart Farm Energy Management System</h4>
+                        <p class="text-muted mb-4">Integrated control system to optimize energy usage across your farm, connecting renewable sources with monitoring and automation.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="product-specs">
+                                <span class="d-block mb-1"><i class="fa fa-mobile-alt text-primary me-2"></i> Mobile app control</span>
+                                <span class="d-block"><i class="fa fa-chart-line text-primary me-2"></i> Real-time analytics</span>
+                            </div>
+                            <div class="product-price fw-bold fs-5">
+                                From R120,000
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="fa fa-balance-scale me-1"></i> Compare</a>
+                            <a href="#" class="btn btn-primary flex-grow-1"><i class="fa fa-info-circle me-1"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary py-3 px-5">View All Products</a>
+        </div>
+    </div>
+</div>
+<!-- Products Category End -->
+<!-- Technology Comparison Start -->
+<div class="container-fluid py-5 bg-light" id="comparison">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Compare Options</h6>
+            <h1 class="display-5 mb-2">Technology Comparison</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Find the right renewable energy solution for your farm's specific needs and conditions.</p>
+        </div>
+
+        <div class="bg-white rounded-3 shadow p-4 mb-5">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="bg-light">
+                        <tr>
+                            <th style="min-width: 200px;">Technology</th>
+                            <th>Initial Cost</th>
+                            <th>Operation Cost</th>
+                            <th>Lifespan</th>
+                            <th>Energy Output</th>
+                            <th>Maintenance</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold"><i class="fa fa-sun text-warning me-2"></i> Solar Power</td>
+                            <td>R250k - R800k</td>
+                            <td>Very Low</td>
+                            <td>25+ years</td>
+                            <td>Seasonal/Daylight</td>
+                            <td>Minimal</td>
+                            <td>Irrigation, General Power</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa fa-wind text-info me-2"></i> Wind Turbine</td>
+                            <td>R450k - R1.2M</td>
+                            <td>Low</td>
+                            <td>20+ years</td>
+                            <td>Variable/24hr</td>
+                            <td>Moderate</td>
+                            <td>Large Farms, Windy Areas</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa fa-recycle text-success me-2"></i> Biogas System</td>
+                            <td>R350k - R950k</td>
+                            <td>Moderate</td>
+                            <td>15+ years</td>
+                            <td>Constant</td>
+                            <td>Significant</td>
+                            <td>Livestock Farms, Waste Management</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa fa-battery-full text-danger me-2"></i> Energy Storage</td>
+                            <td>R180k - R500k</td>
+                            <td>Low</td>
+                            <td>10+ years</td>
+                            <td>Supports Other Systems</td>
+                            <td>Low</td>
+                            <td>Power Backup, Load Shifting</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa fa-temperature-high text-primary me-2"></i> Solar Thermal</td>
+                            <td>R85k - R250k</td>
+                            <td>Very Low</td>
+                            <td>20+ years</td>
+                            <td>Seasonal/Daylight</td>
+                            <td>Low</td>
+                            <td>Water Heating, Processing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="bg-white rounded-3 shadow p-4 h-100">
+                    <h4 class="mb-4">ROI Calculator</h4>
+                    <p class="mb-4">Estimate the return on investment for different green energy solutions based on your farm's specific parameters.</p>
+                    <form>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Technology Type</label>
+                                <select class="form-select">
+                                    <option>Solar Power System</option>
+                                    <option>Wind Turbine System</option>
+                                    <option>Biogas System</option>
+                                    <option>Energy Storage</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Farm Size (hectares)</label>
+                                <input type="number" class="form-control" placeholder="Enter farm size">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Current Monthly Energy Cost (R)</label>
+                                <input type="number" class="form-control" placeholder="Enter amount">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Daily Energy Requirement (kWh)</label>
+                                <input type="number" class="form-control" placeholder="Enter kWh">
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary py-3">Calculate ROI</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="bg-white rounded-3 shadow p-4 h-100">
+                    <h4 class="mb-4">System Selector Tool</h4>
+                    <p class="mb-4">Answer a few questions to get personalized recommendations for the most suitable energy solutions for your farm.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">What type of agricultural operation do you run?</label>
+                            <select class="form-select">
+                                <option>Crop Farming</option>
+                                <option>Livestock Farming</option>
+                                <option>Mixed Farming</option>
+                                <option>Dairy Farming</option>
+                                <option>Horticulture/Greenhouse</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">What is your primary energy need?</label>
+                            <select class="form-select">
+                                <option>Irrigation</option>
+                                <option>Climate Control</option>
+                                <option>Machinery Operation</option>
+                                <option>Processing Equipment</option>
+                                <option>Lighting</option>
+                                <option>General Power</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">What is your budget range?</label>
+                            <select class="form-select">
+                                <option>Under R100,000</option>
+                                <option>R100,000 - R250,000</option>
+                                <option>R250,000 - R500,000</option>
+                                <option>R500,000 - R1,000,000</option>
+                                <option>Over R1,000,000</option>
+                            </select>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary py-3">Get Recommendations</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Technology Comparison End -->
+<!-- Testimonials Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Success Stories</h6>
+            <h1 class="display-5 mb-2">Farmer Testimonials</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Hear from farmers who have successfully implemented green energy solutions on their farms.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="testimonial-item bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle flex-shrink-0" src="img/testimonial-1.jpg" alt="Farmer" style="width: 70px; height: 70px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Johannes Botha</h5>
+                            <p class="mb-0 text-muted">Wheat Farm, Free State</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating text-warning mb-3">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="testimonial-text mb-0">"The solar irrigation system has transformed our water management. We've reduced our electricity costs by 75% while maintaining optimal irrigation schedules. The ROI has been incredible - the system paid for itself in just under 3 years."</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="testimonial-item bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle flex-shrink-0" src="img/testimonial-2.jpg" alt="Farmer" style="width: 70px; height: 70px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Maria Zwane</h5>
+                            <p class="mb-0 text-muted">Mixed Farm, Northern Cape</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating text-warning mb-3">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text mb-0">"Our wind turbine installation has been a game-changer for our large agricultural operation. Not only are we completely energy independent now, but we're also selling excess power back to the grid. The expert installation team made the process smooth and hassle-free."</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="testimonial-item bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle flex-shrink-0" src="img/testimonial-3.jpg" alt="Farmer" style="width: 70px; height: 70px; object-fit: cover;">
+                        <div class="ms-3">
+                            <h5 class="mb-1">Themba Khumalo</h5>
+                            <p class="mb-0 text-muted">Dairy Farm, KwaZulu-Natal</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating text-warning mb-3">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="testimonial-text mb-0">"Our biogas system has significantly reduced both our energy costs and waste management expenses. We're now converting dairy waste into valuable energy that powers our entire milking operation. The technical support team has been exceptional throughout the entire process."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary py-3 px-5">Read More Success Stories</a>
+        </div>
+    </div>
+</div>
+<!-- Testimonials End -->
+<!-- Providers Section Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Our Network</h6>
+            <h1 class="display-5 mb-2">Trusted Technology Providers</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">We partner with leading manufacturers and installers of renewable energy systems to ensure quality and reliability.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div class="provider-card bg-white rounded-3 p-4 text-center shadow-hover h-100">
+                    <img src="img/vendor-1.png" alt="Provider Logo" class="img-fluid provider-logo mb-3">
+                    <h6 class="provider-name">SolarTech</h6>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div class="provider-card bg-white rounded-3 p-4 text-center shadow-hover h-100">
+                    <img src="img/vendor-2.png" alt="Provider Logo" class="img-fluid provider-logo mb-3">
+                    <h6 class="provider-name">WindPower SA</h6>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div class="provider-card bg-white rounded-3 p-4 text-center shadow-hover h-100">
+                    <img src="img/vendor-3.png" alt="Provider Logo" class="img-fluid provider-logo mb-3">
+                    <h6 class="provider-name">BioEnergy Systems</h6>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div class="provider-card bg-white rounded-3 p-4 text-center shadow-hover h-100">
+                    <img src="img/vendor-4.png" alt="Provider Logo" class="img-fluid provider-logo mb-3">
+                    <h6 class="provider-name">StoragePlus</h6>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div class="provider-card bg-white rounded-3 p-4 text-center shadow-hover h-100">
+                    <img src="img/vendor-5.png" alt="Provider Logo" class="img-fluid provider-logo mb-3">
+                    <h6 class="provider-name">EcoFarm Solutions</h6>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div class="provider-card bg-white rounded-3 p-4 text-center shadow-hover h-100">
+                    <img src="/img/vendor-6.png" alt="Provider Logo" class="img-fluid provider-logo mb-3">
+                    <h6 class="provider-name">SmartAgri Tech</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-primary py-3 px-5">Become a Provider</a>
+        </div>
+    </div>
+</div>
+<!-- Providers Section End -->
+<!-- Funding Options Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Financial Support</h6>
+            <h1 class="display-5 mb-2">Funding & Incentives</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Discover available financial assistance programs to help fund your green energy project.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="funding-card bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="funding-icon bg-light rounded-3 p-3 d-inline-block mb-3">
+                        <i class="fa fa-hand-holding-usd text-primary fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Government Grants</h4>
+                    <p class="mb-3">Access non-repayable grants specifically designed for agricultural renewable energy projects through the Department of Agriculture and Energy.</p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Up to 50% of project costs covered</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Priority for small and medium farms</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Simplified application process</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">Explore Grants</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="funding-card bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="funding-icon bg-light rounded-3 p-3 d-inline-block mb-3">
+                        <i class="fa fa-percentage text-primary fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Low-Interest Loans</h4>
+                    <p class="mb-3">Special financing options with reduced interest rates and extended repayment terms for qualifying renewable energy implementations.</p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Interest rates from 3.5%</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Repayment terms up to 15 years</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Grace period options available</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">View Loan Options</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="funding-card bg-white rounded-3 p-4 shadow-hover h-100">
+                    <div class="funding-icon bg-light rounded-3 p-3 d-inline-block mb-3">
+                        <i class="fa fa-file-invoice text-primary fa-2x"></i>
+                    </div>
+                    <h4 class="mb-3">Tax Incentives</h4>
+                    <p class="mb-3">Take advantage of significant tax deductions and credits for investments in qualifying renewable energy systems for your farm.</p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Section 12B accelerated depreciation</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> VAT exemptions on specific equipment</li>
+                        <li class="mb-2"><i class="fa fa-check text-primary me-2"></i> Carbon tax offsets available</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">Learn About Tax Benefits</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Funding Options End -->
+<!-- CTA Section Start -->
+<div class="container-fluid py-5 bg-primary">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 text-white mb-4">Ready to Transform Your Farm's Energy Future?</h1>
+                <p class="text-white mb-4">Schedule a free consultation with our renewable energy experts to discover the perfect green energy solutions for your agricultural operation.</p>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-light py-3 px-5 me-3">Request Consultation</a>
+                    <a href="#" class="btn btn-outline-light py-3 px-5">Download Brochure</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-white rounded-3 p-4 p-sm-5 shadow">
+                    <form>
+                        <h4 class="mb-4">Get in Touch</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light border-0" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control bg-light border-0" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control bg-light border-0" placeholder="Your Phone">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select bg-light border-0" required>
+                                    <option selected disabled>Interested In</option>
+                                    <option>Solar Power</option>
+                                    <option>Wind Energy</option>
+                                    <option>Biogas Systems</option>
+                                    <option>Energy Storage</option>
+                                    <option>Multiple Solutions</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control bg-light border-0" rows="4" placeholder="Tell us about your requirements" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Submit Request</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CTA Section End -->
+<!-- FAQs Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Common Questions</h6>
+            <h1 class="display-5 mb-2">Frequently Asked Questions</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Find answers to common questions about agricultural renewable energy solutions.</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="accordion" id="faqAccordion1">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> How much can I save with renewable energy?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion1">
+                            <div class="accordion-body">
+                                Most farmers see energy cost reductions of 50-80% after installing renewable energy systems. The exact savings depend on your current energy costs, the type of system installed, and your farm's energy requirements. Many systems pay for themselves within 3-7 years, after which the energy produced is essentially free aside from minimal maintenance costs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> What maintenance is required for these systems?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion1">
+                            <div class="accordion-body">
+                                Maintenance requirements vary by system. Solar systems require minimal maintenance—mainly keeping panels clean and occasional electrical checks. Wind turbines need annual inspections and servicing every 3-5 years. Biogas systems require the most attention with regular monitoring of inputs and biological processes. Most providers offer maintenance packages with their installations.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 shadow-sm">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> Can I sell excess energy back to the grid?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion1">
+                            <div class="accordion-body">
+                                Yes, many farms with renewable energy systems can sell excess electricity back to the grid through net metering programs. This allows you to receive credits or payments for surplus energy, further improving your ROI. The process requires registration as an Independent Power Producer and compliance with local regulations. Our experts can guide you through this process.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="accordion" id="faqAccordion2">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> How long does installation typically take?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion2">
+                            <div class="accordion-body">
+                                Installation timeframes vary based on system type and size. Typically, solar systems take 2-4 weeks, wind turbines 4-8 weeks, and biogas systems 6-12 weeks. These timelines include planning, permitting, installation, and commissioning. We work closely with providers to minimize disruption to your farming operations during the installation process.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> What happens during power outages?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion2">
+                            <div class="accordion-body">
+                                Systems can be designed to operate during grid outages through battery storage or hybrid configurations. Grid-tied systems without storage typically shut down during outages for safety reasons. Adding battery storage allows continued power supply to critical farm operations. Our experts can design systems with appropriate backup capabilities based on your specific needs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 shadow-sm">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> Do you provide after-sales support?
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion2">
+                            <div class="accordion-body">
+                                Yes, all systems offered through our marketplace include manufacturer warranties and after-sales support. Additionally, we follow up with customers regularly to ensure system performance. Maintenance packages are available with scheduled check-ups and priority service. Remote monitoring options allow for real-time system performance tracking and early problem detection.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQs End -->
+
+<style>
+    .text-shadow {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .shadow-hover {
+        transition: all 0.3s ease;
+    }
+
+        .shadow-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+        }
+
+    .product-tag {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .product-card .product-specs {
+        font-size: 14px;
+    }
+
+    .provider-logo {
+        filter: grayscale(80%);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        max-height: 60px;
+    }
+
+    .provider-card:hover .provider-logo {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    .accordion-button:not(.collapsed) {
+        color: #00674b;
+        background-color: #F6FFF2;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+    }
+
+    .accordion-button:focus {
+        border-color: #00AB66;
+        box-shadow: 0 0 0 0.25rem rgba(0, 171, 102, 0.25);
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Add animation to product cards on scroll
+        window.addEventListener('scroll', function () {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.8) {
+                    card.classList.add('fadeInUp');
+                }
+            });
+        });
+
+        // Handle form submission in ROI calculator
+        const roiCalculatorForm = document.querySelector('.col-lg-6 form:first-of-type');
+        if (roiCalculatorForm) {
+            roiCalculatorForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('ROI calculation would be implemented here!');
+            });
+        }
+
+        // Handle form submission in system selector
+        const systemSelectorForm = document.querySelector('.col-lg-6 form:nth-of-type(2)');
+        if (systemSelectorForm) {
+            systemSelectorForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('System recommendations would be displayed here!');
+            });
+        }
+
+        // Handle contact form submission
+        const contactForm = document.querySelector('.bg-white.rounded-3.p-4.p-sm-5 form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Your request has been submitted. Our team will contact you shortly!');
+                this.reset();
+            });
+        }
+    </script>
+}
