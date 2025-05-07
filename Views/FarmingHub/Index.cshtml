@@ -1,0 +1,1005 @@
+﻿@{
+    ViewData["Title"] = "Sustainable Farming Hub";
+}
+
+<!-- Topbar Start -->
+<div class="container-fluid px-5 d-none d-lg-block">
+    <div class="row gx-5 py-3 align-items-center">
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-start">
+                <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
+                <h2 class="mb-0">+031 123 6789</h2>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="index.html" class="navbar-brand ms-lg-5">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Agri-Energy</span>Connect</h1>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-end">
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none">
+        <h1 class="m-0 display-4 text-secondary"><span class="text-white">Agri</span>Energy</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav py-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="/farminghub" class="nav-item nav-link active">Farming Hub</a>
+            <a href="/" class="nav-item nav-link">Energy Marketplace</a>
+            <a href="/" class="nav-item nav-link">Training & Resources</a>
+            <a href="/" class="nav-item nav-link">Projects & Funding</a>
+            @if (User.IsInRole("Farmer"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Farmer Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">My Products</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">My Profile</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Farmers</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">Manage Products</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Employees</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5" style="background: linear-gradient(rgba(0, 103, 75, .9), rgba(0, 103, 75, .9)), url(/img/carousel-1.jpg) center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Sustainable Farming Hub</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Farming Hub</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Hub Introduction Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h6 class="text-primary text-uppercase">Welcome to our</h6>
+                    <h1 class="display-5 mb-3">Sustainable Farming Resource Center</h1>
+                    <div class="divider-green mb-4" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+                </div>
+                <p class="mb-4">Our Sustainable Farming Hub connects farmers with essential resources, innovative techniques, and a supportive community dedicated to environmentally responsible agriculture. Here you'll find comprehensive guides on organic farming, water conservation, soil health maintenance, and more.</p>
+                <p class="mb-4">Join our interactive forums to share your experiences, ask questions, and collaborate with fellow farmers and sustainability experts from around the world.</p>
+                <div class="d-flex align-items-center">
+                    <a href="#resources" class="btn btn-primary py-3 px-5 me-3">Explore Resources</a>
+                    <a href="#forums" class="btn btn-outline-secondary py-3 px-5">Join Discussions</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative overflow-hidden rounded shadow-lg" style="height: 500px;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="img/carousel-1.jpg" alt="Sustainable Farming" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 103, 75, .2);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <div class="bg-white rounded-pill text-primary px-4 py-1 mb-3 d-inline-block">Sustainable Practices</div>
+                                    <h3 class="text-white text-shadow">Cultivating a Greener Tomorrow Through Innovation and Collaboration</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hub Introduction End -->
+<!-- Resource Categories Start -->
+<div class="container-fluid py-5 bg-light" id="resources">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Knowledge Center</h6>
+            <h1 class="display-5 mb-2">Sustainable Farming Resources</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Explore our comprehensive collection of guides, tutorials, and best practices to enhance your sustainable farming journey.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item bg-white rounded overflow-hidden h-100 shadow-sm position-relative">
+                    <div class="position-absolute start-0 top-0 w-3 h-100 bg-primary"></div>
+                    <div class="p-4 pt-5 position-relative">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4 resource-icon" style="width: 80px; height: 80px; margin-top: -60px;">
+                            <i class="fa fa-seedling text-white fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Organic Farming Techniques</h4>
+                        <p class="mb-3">Learn effective methods for chemical-free cultivation, natural pest management, crop rotation strategies, and intercropping systems.</p>
+                        <div class="d-flex justify-content-between resource-stats">
+                            <span><i class="fa fa-file-alt text-primary me-2"></i> 24 Guides</span>
+                            <span><i class="fa fa-users text-primary me-2"></i> 328 Members</span>
+                        </div>
+                        <a class="btn btn-outline-primary px-4 mt-3" href="">
+                            Explore Resources <i class="fa fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item bg-white rounded overflow-hidden h-100 shadow-sm position-relative">
+                    <div class="position-absolute start-0 top-0 w-3 h-100 bg-primary"></div>
+                    <div class="p-4 pt-5 position-relative">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4 resource-icon" style="width: 80px; height: 80px; margin-top: -60px;">
+                            <i class="fa fa-tint text-white fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Water Conservation Methods</h4>
+                        <p class="mb-3">Discover efficient irrigation systems, rainwater harvesting techniques, drought-resistant crops, and water recycling solutions.</p>
+                        <div class="d-flex justify-content-between resource-stats">
+                            <span><i class="fa fa-file-alt text-primary me-2"></i> 19 Guides</span>
+                            <span><i class="fa fa-users text-primary me-2"></i> 275 Members</span>
+                        </div>
+                        <a class="btn btn-outline-primary px-4 mt-3" href="">
+                            Explore Resources <i class="fa fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item bg-white rounded overflow-hidden h-100 shadow-sm position-relative">
+                    <div class="position-absolute start-0 top-0 w-3 h-100 bg-primary"></div>
+                    <div class="p-4 pt-5 position-relative">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4 resource-icon" style="width: 80px; height: 80px; margin-top: -60px;">
+                            <i class="fa fa-spa text-white fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Soil Health Maintenance</h4>
+                        <p class="mb-3">Learn about regenerative practices, cover cropping, composting methods, and techniques to enhance soil biodiversity.</p>
+                        <div class="d-flex justify-content-between resource-stats">
+                            <span><i class="fa fa-file-alt text-primary me-2"></i> 32 Guides</span>
+                            <span><i class="fa fa-users text-primary me-2"></i> 415 Members</span>
+                        </div>
+                        <a class="btn btn-outline-primary px-4 mt-3" href="">
+                            Explore Resources <i class="fa fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item bg-white rounded overflow-hidden h-100 shadow-sm position-relative">
+                    <div class="position-absolute start-0 top-0 w-3 h-100 bg-primary"></div>
+                    <div class="p-4 pt-5 position-relative">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4 resource-icon" style="width: 80px; height: 80px; margin-top: -60px;">
+                            <i class="fa fa-solar-panel text-white fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Renewable Energy Integration</h4>
+                        <p class="mb-3">Explore solar-powered irrigation systems, wind energy solutions, biogas generators, and energy-efficient farm operations.</p>
+                        <div class="d-flex justify-content-between resource-stats">
+                            <span><i class="fa fa-file-alt text-primary me-2"></i> 17 Guides</span>
+                            <span><i class="fa fa-users text-primary me-2"></i> 246 Members</span>
+                        </div>
+                        <a class="btn btn-outline-primary px-4 mt-3" href="">
+                            Explore Resources <i class="fa fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item bg-white rounded overflow-hidden h-100 shadow-sm position-relative">
+                    <div class="position-absolute start-0 top-0 w-3 h-100 bg-primary"></div>
+                    <div class="p-4 pt-5 position-relative">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4 resource-icon" style="width: 80px; height: 80px; margin-top: -60px;">
+                            <i class="fa fa-leaf text-white fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Biodiversity Enhancement</h4>
+                        <p class="mb-3">Learn about companion planting, beneficial insect habitats, wildlife corridors, and agroforestry integration techniques.</p>
+                        <div class="d-flex justify-content-between resource-stats">
+                            <span><i class="fa fa-file-alt text-primary me-2"></i> 21 Guides</span>
+                            <span><i class="fa fa-users text-primary me-2"></i> 293 Members</span>
+                        </div>
+                        <a class="btn btn-outline-primary px-4 mt-3" href="">
+                            Explore Resources <i class="fa fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item bg-white rounded overflow-hidden h-100 shadow-sm position-relative">
+                    <div class="position-absolute start-0 top-0 w-3 h-100 bg-primary"></div>
+                    <div class="p-4 pt-5 position-relative">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary mb-4 resource-icon" style="width: 80px; height: 80px; margin-top: -60px;">
+                            <i class="fa fa-chart-line text-white fa-2x"></i>
+                        </div>
+                        <h4 class="mb-3">Sustainable Farm Planning</h4>
+                        <p class="mb-3">Access templates for ecological farm design, cost analysis tools, certification guides, and long-term sustainability planning.</p>
+                        <div class="d-flex justify-content-between resource-stats">
+                            <span><i class="fa fa-file-alt text-primary me-2"></i> 26 Guides</span>
+                            <span><i class="fa fa-users text-primary me-2"></i> 367 Members</span>
+                        </div>
+                        <a class="btn btn-outline-primary px-4 mt-3" href="">
+                            Explore Resources <i class="fa fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Resource Categories End -->
+<!-- Featured Articles Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Knowledge Bank</h6>
+            <h1 class="display-5 mb-2">Featured Articles & Insights</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Stay informed with the latest research, case studies, and practical guides from our sustainable farming experts.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 mb-4">
+                <div class="row g-4 align-items-center featured-article bg-light rounded overflow-hidden p-4 shadow-sm">
+                    <div class="col-md-6">
+                        <div class="position-relative overflow-hidden rounded">
+                            <img class="img-fluid w-100" src="img/blog-1.jpg" alt="Featured Article">
+                            <div class="featured-badge bg-primary text-white px-3 py-1 rounded-pill position-absolute" style="top: 15px; left: 15px;">
+                                Featured
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex mb-2">
+                            <span class="bg-primary text-white rounded-pill px-2 py-1 me-2 d-inline-block" style="font-size: 12px;">Soil Health</span>
+                            <span class="text-muted"><i class="fa fa-calendar-alt me-1"></i> May 05, 2025</span>
+                        </div>
+                        <h3>Regenerative Agriculture: The Future of Sustainable Farming</h3>
+                        <p class="text-muted">Discover how regenerative practices are transforming farms worldwide, improving soil health, increasing biodiversity, and enhancing farm resilience while sequestering carbon.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle me-2" src="img/testimonial-1.jpg" alt="Author" style="width: 40px; height: 40px; object-fit: cover;">
+                                <div>
+                                    <p class="m-0 fw-bold">Dr. Emma Green</p>
+                                    <small class="text-muted">Sustainable Farming Expert</small>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-item position-relative overflow-hidden rounded shadow-sm">
+                    <img class="img-fluid" src="img/blog-2.jpg" alt="">
+                    <a class="blog-overlay" href="">
+                        <h4 class="text-white">Water-Smart Irrigation Technologies for Water Conservation</h4>
+                        <span class="text-white fw-bold">April 28, 2025</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-item position-relative overflow-hidden rounded shadow-sm">
+                    <img class="img-fluid" src="img/blog-3.jpg" alt="">
+                    <a class="blog-overlay" href="">
+                        <h4 class="text-white">Integrating Solar Power Systems on Small-Scale Farms</h4>
+                        <span class="text-white fw-bold">April 15, 2025</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-item position-relative overflow-hidden rounded shadow-sm">
+                    <img class="img-fluid" src="img/blog-1.jpg" alt="">
+                    <a class="blog-overlay" href="">
+                        <h4 class="text-white">Organic Pest Management: Natural Predators as Control Agents</h4>
+                        <span class="text-white fw-bold">April 10, 2025</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+                <a href="" class="btn btn-primary py-3 px-5">View All Articles</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured Articles End -->
+<!-- Interactive Forums Start -->
+<div class="container-fluid py-5 bg-light" id="forums">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Community Exchange</h6>
+            <h1 class="display-5 mb-2">Interactive Discussion Forums</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Connect with fellow farmers, share experiences, ask questions, and collaborate on sustainable farming initiatives.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 mb-4">
+                <div class="bg-white rounded shadow-sm p-4">
+                    <div class="d-flex justify-content-between flex-wrap mb-2">
+                        <h3 class="mb-0">Popular Discussion Threads</h3>
+                        <div class="forum-filter d-flex align-items-center">
+                            <span class="me-2">Filter by:</span>
+                            <select class="form-select form-select-sm">
+                                <option selected>All Topics</option>
+                                <option>Organic Farming</option>
+                                <option>Water Conservation</option>
+                                <option>Soil Health</option>
+                                <option>Renewable Energy</option>
+                                <option>Biodiversity</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divider-green mb-4" style="height: 2px; width: 50px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+
+                    <div class="forum-search mb-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search discussions...">
+                            <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="forum-threads">
+                        <div class="forum-thread p-3 border-bottom d-flex align-items-start">
+                            <div class="forum-icon bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fa fa-seedling text-primary"></i>
+                            </div>
+                            <div class="forum-content flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0"><a href="" class="text-dark">Crop Rotation Planning for Small Farms</a></h5>
+                                    <div class="forum-badges">
+                                        <span class="badge bg-primary">Organic</span>
+                                        <span class="badge bg-secondary">Soil Health</span>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2">Sharing strategies for effective crop rotation on small plots to improve soil health and manage pests naturally.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="forum-meta">
+                                        <span class="me-3"><i class="fa fa-user text-primary me-1"></i> Started by Sarah Miller</span>
+                                        <span class="me-3"><i class="fa fa-calendar text-primary me-1"></i> 2 days ago</span>
+                                    </div>
+                                    <div class="forum-stats">
+                                        <span class="me-3"><i class="fa fa-users text-primary me-1"></i> 24 Participants</span>
+                                        <span><i class="fa fa-comments text-primary me-1"></i> 78 Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forum-thread p-3 border-bottom d-flex align-items-start">
+                            <div class="forum-icon bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fa fa-solar-panel text-primary"></i>
+                            </div>
+                            <div class="forum-content flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0"><a href="" class="text-dark">Solar Water Pumps: Installation and Maintenance</a></h5>
+                                    <div class="forum-badges">
+                                        <span class="badge bg-primary">Energy</span>
+                                        <span class="badge bg-secondary">Water</span>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2">Discussion on best practices for installing and maintaining solar-powered water pumping systems for farms.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="forum-meta">
+                                        <span class="me-3"><i class="fa fa-user text-primary me-1"></i> Started by Michael Chen</span>
+                                        <span class="me-3"><i class="fa fa-calendar text-primary me-1"></i> 4 days ago</span>
+                                    </div>
+                                    <div class="forum-stats">
+                                        <span class="me-3"><i class="fa fa-users text-primary me-1"></i> 18 Participants</span>
+                                        <span><i class="fa fa-comments text-primary me-1"></i> 42 Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forum-thread p-3 border-bottom d-flex align-items-start">
+                            <div class="forum-icon bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fa fa-bug text-primary"></i>
+                            </div>
+                            <div class="forum-content flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0"><a href="" class="text-dark">Organic Pest Management Strategies</a></h5>
+                                    <div class="forum-badges">
+                                        <span class="badge bg-primary">Organic</span>
+                                        <span class="badge bg-secondary">Pest Control</span>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2">Exchange natural solutions for common agricultural pests using companion planting, beneficial insects, and homemade sprays.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="forum-meta">
+                                        <span class="me-3"><i class="fa fa-user text-primary me-1"></i> Started by Elena Rodriguez</span>
+                                        <span class="me-3"><i class="fa fa-calendar text-primary me-1"></i> 1 week ago</span>
+                                    </div>
+                                    <div class="forum-stats">
+                                        <span class="me-3"><i class="fa fa-users text-primary me-1"></i> 31 Participants</span>
+                                        <span><i class="fa fa-comments text-primary me-1"></i> 93 Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forum-thread p-3 border-bottom d-flex align-items-start">
+                            <div class="forum-icon bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fa fa-recycle text-primary"></i>
+                            </div>
+                            <div class="forum-content flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0"><a href="" class="text-dark">Effective Composting Techniques for Farm Waste</a></h5>
+                                    <div class="forum-badges">
+                                        <span class="badge bg-primary">Soil Health</span>
+                                        <span class="badge bg-secondary">Waste Management</span>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2">Sharing various composting methods, from traditional piles to vermicomposting and bokashi systems for farm waste management.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="forum-meta">
+                                        <span class="me-3"><i class="fa fa-user text-primary me-1"></i> Started by James Wilson</span>
+                                        <span class="me-3"><i class="fa fa-calendar text-primary me-1"></i> 2 weeks ago</span>
+                                    </div>
+                                    <div class="forum-stats">
+                                        <span class="me-3"><i class="fa fa-users text-primary me-1"></i> 27 Participants</span>
+                                        <span><i class="fa fa-comments text-primary me-1"></i> 64 Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forum-thread p-3 d-flex align-items-start">
+                            <div class="forum-icon bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fa fa-tint text-primary"></i>
+                            </div>
+                            <div class="forum-content flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0"><a href="" class="text-dark">Rainwater Harvesting Systems for Small Farms</a></h5>
+                                    <div class="forum-badges">
+                                        <span class="badge bg-primary">Water Conservation</span>
+                                        <span class="badge bg-secondary">DIY</span>
+                                    </div>
+                                </div>
+                                <p class="text-muted mb-2">Discussing efficient designs for collecting and storing rainwater, from simple barrels to comprehensive filtration systems.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="forum-meta">
+                                        <span class="me-3"><i class="fa fa-user text-primary me-1"></i> Started by Olivia Patel</span>
+                                        <span class="me-3"><i class="fa fa-calendar text-primary me-1"></i> 3 weeks ago</span>
+                                    </div>
+                                    <div class="forum-stats">
+                                        <span class="me-3"><i class="fa fa-users text-primary me-1"></i> 19 Participants</span>
+                                        <span><i class="fa fa-comments text-primary me-1"></i> 37 Replies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="forum-pagination mt-4 d-flex justify-content-between align-items-center">
+                        <div class="showing-results">
+                            <small class="text-muted">Showing 1-5 of 37 discussions</small>
+                        </div>
+                        <nav aria-label="Forum pagination">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="" class="btn btn-primary py-3 px-5">Start New Discussion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Interactive Forums End -->
+<!-- Community Showcase Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Success Stories</h6>
+            <h1 class="display-5 mb-2">Community Showcase</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Explore inspiring examples from our community members who have successfully implemented sustainable farming practices.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="bg-white rounded shadow-sm p-4 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle me-3" src="img/testimonial-1.jpg" alt="Farmer" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h4 class="mb-1">Green Acres Farm</h4>
+                            <p class="text-muted mb-0">Johannesburg, South Africa</p>
+                        </div>
+                    </div>
+                    <h5>Solar-Powered Irrigation Transformation</h5>
+                    <p>After implementing a comprehensive solar-powered irrigation system, we reduced our water usage by 40% while increasing crop yields by 25%. The system paid for itself within two years through energy savings.</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <img class="img-fluid rounded" src="img/service-1.jpg" alt="Before">
+                            <small class="d-block text-center mt-1">Before</small>
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid rounded" src="img/service-2.jpg" alt="After">
+                            <small class="d-block text-center mt-1">After</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="showcase-stats">
+                            <span class="d-block"><i class="fa fa-tint text-primary me-1"></i> 40% Water Reduction</span>
+                            <span class="d-block"><i class="fa fa-sun text-primary me-1"></i> 100% Renewable Energy</span>
+                        </div>
+                        <a href="" class="btn btn-outline-primary">View Full Case Study</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="bg-white rounded shadow-sm p-4 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="rounded-circle me-3" src="img/testimonial-2.jpg" alt="Farmer" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h4 class="mb-1">Harmony Hills Cooperative</h4>
+                            <p class="text-muted mb-0">Cape Town, South Africa</p>
+                        </div>
+                    </div>
+                    <h5>Regenerative Soil Management Success</h5>
+                    <p>Our cooperative implemented cover cropping, no-till practices, and composting across 200 hectares. Within three years, soil organic matter increased by 3%, resulting in improved water retention and nutrient availability.</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <img class="img-fluid rounded" src="img/service-3.jpg" alt="Before">
+                            <small class="d-block text-center mt-1">Before</small>
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid rounded" src="img/service-4.jpg" alt="After">
+                            <small class="d-block text-center mt-1">After</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="showcase-stats">
+                            <span class="d-block"><i class="fa fa-seedling text-primary me-1"></i> 35% Yield Increase</span>
+                            <span class="d-block"><i class="fa fa-leaf text-primary me-1"></i> 40% Pest Reduction</span>
+                        </div>
+                        <a href="" class="btn btn-outline-primary">View Full Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="" class="btn btn-primary py-3 px-5">Submit Your Success Story</a>
+        </div>
+    </div>
+</div>
+<!-- Community Showcase End -->
+<!-- Upcoming Events Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Knowledge Sharing</h6>
+            <h1 class="display-5 mb-2">Upcoming Events & Webinars</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Join our interactive workshops, training sessions, and webinars to enhance your sustainable farming knowledge.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="event-card bg-white rounded shadow-sm overflow-hidden h-100">
+                    <div class="event-banner position-relative">
+                        <img class="img-fluid" src="img/service-1.jpg" alt="Event">
+                        <div class="event-date position-absolute top-0 start-0 bg-primary text-white text-center py-2 px-3">
+                            <span class="d-block" style="font-size: 24px; font-weight: 700;">15</span>
+                            <span>May</span>
+                        </div>
+                        <div class="event-badge position-absolute top-0 end-0 bg-white text-primary m-3 px-3 py-1 rounded-pill">
+                            Webinar
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span><i class="fa fa-clock text-primary me-2"></i> 2:00 PM - 4:00 PM</span>
+                            <span><i class="fa fa-map-marker-alt text-primary me-2"></i> Online</span>
+                        </div>
+                        <h4>Advanced Organic Pest Management Strategies</h4>
+                        <p class="text-muted">Learn cutting-edge approaches to managing agricultural pests without synthetic chemicals. Expert speakers will share proven methods that preserve biodiversity.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <span class="badge bg-light text-primary">Free Registration</span>
+                            <a href="" class="btn btn-outline-primary px-4">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="event-card bg-white rounded shadow-sm overflow-hidden h-100">
+                    <div class="event-banner position-relative">
+                        <img class="img-fluid" src="img/service-2.jpg" alt="Event">
+                        <div class="event-date position-absolute top-0 start-0 bg-primary text-white text-center py-2 px-3">
+                            <span class="d-block" style="font-size: 24px; font-weight: 700;">22</span>
+                            <span>May</span>
+                        </div>
+                        <div class="event-badge position-absolute top-0 end-0 bg-white text-primary m-3 px-3 py-1 rounded-pill">
+                            Workshop
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span><i class="fa fa-clock text-primary me-2"></i> 9:00 AM - 3:00 PM</span>
+                            <span><i class="fa fa-map-marker-alt text-primary me-2"></i> Durban</span>
+                        </div>
+                        <h4>Hands-On Rainwater Harvesting System Installation</h4>
+                        <p class="text-muted">Practical workshop demonstrating the setup of efficient rainwater collection systems for small to medium-sized farms, including filtration and storage solutions.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <span class="badge bg-light text-primary">R250 Registration</span>
+                            <a href="" class="btn btn-outline-primary px-4">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="event-card bg-white rounded shadow-sm overflow-hidden h-100">
+                    <div class="event-banner position-relative">
+                        <img class="img-fluid" src="img/service-3.jpg" alt="Event">
+                        <div class="event-date position-absolute top-0 start-0 bg-primary text-white text-center py-2 px-3">
+                            <span class="d-block" style="font-size: 24px; font-weight: 700;">30</span>
+                            <span>May</span>
+                        </div>
+                        <div class="event-badge position-absolute top-0 end-0 bg-white text-primary m-3 px-3 py-1 rounded-pill">
+                            Conference
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span><i class="fa fa-clock text-primary me-2"></i> 8:00 AM - 5:00 PM</span>
+                            <span><i class="fa fa-map-marker-alt text-primary me-2"></i> Cape Town</span>
+                        </div>
+                        <h4>South African Sustainable Agriculture Summit</h4>
+                        <p class="text-muted">Annual conference featuring industry leaders, researchers, and successful farmers sharing latest innovations in sustainable farming practices.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <span class="badge bg-light text-primary">R500 Registration</span>
+                            <a href="" class="btn btn-outline-primary px-4">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="" class="btn btn-primary py-3 px-5">View All Events</a>
+        </div>
+    </div>
+</div>
+<!-- Upcoming Events End -->
+<!-- Join Community CTA Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <div class="d-inline-block rounded-pill bg-primary px-3 py-1 mb-3 text-white">Join Our Community</div>
+                <h1 class="display-5 mb-4">Be Part of the Sustainable Farming Revolution</h1>
+                <p class="mb-4">Connect with thousands of farmers, agricultural experts, and sustainability enthusiasts from across South Africa and beyond. Share knowledge, access exclusive resources, and transform your farming practices.</p>
+                <ul class="list-unstyled mb-5">
+                    <li class="mb-2"><i class="fa fa-check text-primary me-3"></i> Access to exclusive guides and resources</li>
+                    <li class="mb-2"><i class="fa fa-check text-primary me-3"></i> Participate in member-only forums and discussions</li>
+                    <li class="mb-2"><i class="fa fa-check text-primary me-3"></i> Connect with expert mentors and consultants</li>
+                    <li class="mb-2"><i class="fa fa-check text-primary me-3"></i> Early registration for workshops and events</li>
+                    <li><i class="fa fa-check text-primary me-3"></i> Monthly newsletter with latest research and trends</li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="" class="btn btn-primary py-3 px-5 me-3">Join Now - Free</a>
+                    <a href="" class="btn btn-outline-secondary py-3 px-5">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="position-relative overflow-hidden rounded" style="min-height: 500px;">
+                    <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" alt="Community" style="object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-white" style="opacity: 0.1;"></div>
+                    <div class="position-absolute bottom-0 start-0 w-100 p-4">
+                        <div class="bg-white rounded p-4 shadow-lg">
+                            <div class="testimonial-item text-center">
+                                <p class="fs-5 fw-light fst-italic text-muted mb-4">"Joining the Sustainable Farming Hub has transformed our farm. The knowledge shared in the forums and resources helped us implement practices that reduced our water usage by 40% while increasing yields. The community support is invaluable."</p>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="" style="width: 60px; height: 60px;">
+                                    <div class="text-start ms-3">
+                                        <h5 class="mb-1">John Ntuli</h5>
+                                        <span class="text-primary">Organic Farmer, KwaZulu-Natal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Join Community CTA End -->
+<!-- FAQs Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+            <h6 class="text-primary text-uppercase">Questions & Answers</h6>
+            <h1 class="display-5 mb-2">Frequently Asked Questions</h1>
+            <div class="divider-green my-3 mx-auto" style="height: 3px; width: 70px; background: linear-gradient(to right, #00674b, #00AB66);"></div>
+            <p class="mb-4">Find answers to common questions about our Sustainable Farming Hub and resources.</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="accordion" id="faqAccordion1">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> How can I access the Sustainable Farming Hub resources?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion1">
+                            <div class="accordion-body">
+                                All resources in our Sustainable Farming Hub are available to registered users. Basic membership is free and provides access to core content. For premium resources, webinars, and one-on-one consultations, we offer affordable premium membership options designed for different farm sizes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> Can I contribute my own farming experiences and knowledge?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion1">
+                            <div class="accordion-body">
+                                Absolutely! We encourage community contributions. You can share your experiences in our forums, submit articles for our blog, or apply to become a featured case study. We believe in the power of farmer-to-farmer knowledge exchange to accelerate sustainable practices.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 shadow-sm">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> Are the sustainable farming practices applicable to small-scale farms?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion1">
+                            <div class="accordion-body">
+                                Yes! Our resources cater to farms of all sizes. We have dedicated sections for small-scale and urban farming, with techniques and solutions specifically designed for limited space and resources. Many sustainable practices are actually more feasible to implement on smaller farms.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="accordion" id="faqAccordion2">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> How can I connect with farming experts for personalized advice?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion2">
+                            <div class="accordion-body">
+                                Our Expert Connect feature allows you to book virtual consultations with specialists in various aspects of sustainable farming. Additionally, our forums are monitored by verified experts who regularly provide guidance. Premium members also receive monthly one-on-one advisory sessions.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> Are there resources specific to South African farming conditions?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion2">
+                            <div class="accordion-body">
+                                Yes, we have region-specific resources addressing the unique challenges and opportunities of farming in South Africa's diverse climates. Our local expert network provides guidance on indigenous crops, water conservation in drought-prone areas, and sustainable practices adapted to local conditions.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 shadow-sm">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="background-color: #F6FFF2;">
+                                <i class="fa fa-question-circle text-primary me-2"></i> How can I stay updated on new resources and community discussions?
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion2">
+                            <div class="accordion-body">
+                                All members receive our weekly digest summarizing new resources and active discussions. You can customize notification preferences for specific topics or forums you're interested in. We also send monthly newsletters highlighting success stories, upcoming events, and seasonal farming tips.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+                <p class="text-muted mb-4">Don't see your question answered here? Contact our support team or post in the Help forum.</p>
+                <a href="" class="btn btn-primary py-3 px-5">Ask a Question</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQs End -->
+<!-- Newsletter Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="bg-primary rounded p-5 shadow-lg">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 text-white mb-4">Subscribe to Our Newsletter</h1>
+                    <p class="text-white mb-4">Stay updated with the latest sustainable farming practices, success stories, and upcoming events. Our newsletter is packed with practical tips you can implement right away.</p>
+                    <div class="d-flex text-white mb-0">
+                        <div class="flex-shrink-0 btn-square rounded-circle bg-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            <i class="fa fa-check text-primary"></i>
+                        </div>
+                        <div class="text-start">
+                            <h5 class="text-white">Monthly delivery</h5>
+                            <span>Curated content directly to your inbox</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-white rounded p-4 p-sm-5">
+                        <div class="mb-4">
+                            <h5 class="mb-3">Join 5,000+ Farmers Already Receiving Our Updates</h5>
+                        </div>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control bg-light border-0" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control bg-light border-0" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select bg-light border-0" required>
+                                    <option selected>Select Your Interest</option>
+                                    <option value="all">All Topics</option>
+                                    <option value="organic">Organic Farming</option>
+                                    <option value="water">Water Conservation</option>
+                                    <option value="soil">Soil Health</option>
+                                    <option value="energy">Renewable Energy</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary py-3" type="submit">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Newsletter End -->
+
+<style>
+    .text-shadow {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .w-3 {
+        width: 5px !important;
+    }
+
+    .resource-icon {
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 103, 75, 0.2);
+    }
+
+    .service-item:hover .resource-icon {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 103, 75, 0.3);
+    }
+
+    .resource-stats {
+        font-size: 14px;
+        color: #78909c;
+    }
+
+    .forum-thread {
+        transition: all 0.3s ease;
+    }
+
+        .forum-thread:hover {
+            background-color: #F6FFF2;
+        }
+
+    .forum-badges .badge {
+        font-size: 11px;
+    }
+
+    .event-card {
+        transition: all 0.3s ease;
+    }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+        }
+
+    .accordion-button:not(.collapsed) {
+        color: #00674b;
+        background-color: #F6FFF2;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+    }
+
+    .accordion-button:focus {
+        border-color: #00AB66;
+        box-shadow: 0 0 0 0.25rem rgba(0, 171, 102, 0.25);
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Add animation to resource cards on scroll
+        window.addEventListener('scroll', function () {
+            const serviceItems = document.querySelectorAll('.service-item');
+            serviceItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.8) {
+                    item.classList.add('fadeInUp');
+                }
+            });
+        });
+
+        // Handle forum search
+        const forumSearch = document.querySelector('.forum-search input');
+        if (forumSearch) {
+            forumSearch.addEventListener('keyup', function (e) {
+                if (e.key === 'Enter') {
+                    alert('Search functionality would be implemented here!');
+                }
+            });
+        }
+
+        // Handle forum filter
+        const forumFilter = document.querySelector('.forum-filter select');
+        if (forumFilter) {
+            forumFilter.addEventListener('change', function () {
+                alert('Filter functionality would be implemented here with category: ' + this.value);
+            });
+        }
+    </script>
+}
