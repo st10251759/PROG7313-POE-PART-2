@@ -4,66 +4,599 @@
     ViewData["Title"] = "Add New Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-            <h1 class="display-5">Add New Product</h1>
-            <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+
+<style>
+    :root {
+        --primary: #00674b;
+        --secondary: #00AB66;
+        --tertiary: #00A693;
+        --accent: #34AD54;
+        --light: #F6FFF2;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --medium-gray: #e9ecef;
+        --dark-text: #343a40;
+    }
+
+    /* Farmer Dashboard Layout */
+    .farmer-container {
+        display: flex;
+        min-height: calc(100vh - 300px);
+    }
+
+    /* Sidebar Styles */
+    .farmer-sidebar {
+        width: 280px;
+        background: linear-gradient(to bottom, var(--primary), var(--tertiary));
+        color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 103, 75, 0.2);
+        padding: 25px 0;
+        transition: all 0.3s ease;
+        margin-right: 25px;
+        overflow: hidden;
+    }
+
+    .sidebar-header {
+        padding: 0 20px 20px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .sidebar-header h4 {
+        margin: 0;
+        color: var(--white);
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar-header .farmer-avatar {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 1.8rem;
+        color: var(--primary);
+    }
+
+    .nav-pills .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+        padding: 12px 20px;
+        border-radius: 0;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        margin: 2px 0;
+    }
+
+    .nav-pills .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+    }
+
+    .nav-pills .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        border-left: 4px solid var(--white);
+    }
+
+    .nav-pills .nav-link i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+        width: 24px;
+        text-align: center;
+    }
+
+    /* Main Content Area */
+    .farmer-content {
+        flex: 1;
+        padding: 0 15px;
+        width: calc(100% - 280px);
+    }
+
+    /* Page Title */
+    .page-title {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .page-title h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .page-title p {
+        color: #6c757d;
+        margin-bottom: 0;
+    }
+
+    .page-divider {
+        height: 4px;
+        width: 60px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        margin-bottom: 25px;
+        border-radius: 2px;
+    }
+
+    /* Form Styling */
+    .form-card {
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .form-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+
+    .form-section {
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .form-section-title {
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--medium-gray);
+        display: flex;
+        align-items: center;
+    }
+
+    .form-section-title i {
+        margin-right: 10px;
+        color: var(--primary);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .form-label {
+        color: var(--dark-text);
+        font-weight: 500;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-label i {
+        margin-right: 8px;
+        color: var(--primary);
+        font-size: 0.9rem;
+    }
+
+    .form-control, .form-select {
+        border: 1.5px solid #e1e1e1;
+        border-radius: 8px;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        background-color: var(--white);
+        color: var(--dark-text);
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 0.25rem rgba(0, 171, 102, 0.15);
+    }
+
+    .form-text {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+
+    .required-indicator {
+        color: #dc3545;
+        margin-left: 3px;
+    }
+
+    /* Image Preview */
+    .image-preview-container {
+        text-align: center;
+        margin-top: 15px;
+        display: none;
+    }
+
+    .image-preview {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 8px;
+        border: 1px solid #e1e1e1;
+    }
+
+    /* File Input Styling */
+    .file-input-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .file-input-button {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 8px 15px;
+        border-radius: 8px;
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+    .file-input-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 103, 75, 0.2);
+    }
+
+    .file-input-button input[type="file"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        cursor: pointer;
+        display: block;
+    }
+
+    .file-name {
+        margin-left: 10px;
+        color: #6c757d;
+    }
+
+    /* Form Buttons */
+    .form-buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-farmer-secondary {
+        background-color: #e9ecef;
+        color: var(--dark-text);
+        border: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-farmer-secondary:hover {
+        background-color: #dee2e6;
+        transform: translateY(-2px);
+    }
+
+    .btn-farmer-primary {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 103, 75, 0.2);
+    }
+
+    .btn-farmer-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 103, 75, 0.3);
+        color: white;
+    }
+
+    .btn-farmer-primary i, .btn-farmer-secondary i {
+        margin-right: 8px;
+    }
+
+    /* Alert Styling */
+    .alert-validation {
+        background-color: #fff8f8;
+        border-left: 4px solid #dc3545;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .alert-validation ul {
+        margin-bottom: 0;
+        padding-left: 20px;
+    }
+
+    .alert-validation li {
+        margin-bottom: 5px;
+    }
+
+   
+</style>
+
+<!-- Topbar Start -->
+<div class="container-fluid px-5 d-none d-lg-block">
+    <div class="row gx-5 py-3 align-items-center">
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-start">
+                <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
+                <h2 class="mb-0">+031 123 6789</h2>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="index.html" class="navbar-brand ms-lg-5">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Agri-Energy</span>Connect</h1>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-end">
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none">
+        <h1 class="m-0 display-4 text-secondary"><span class="text-white">Agri</span>Energy</h1>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav py-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="/farminghub" class="nav-item nav-link">Farming Hub</a>
+            <a href="/marketplace" class="nav-item nav-link">Energy Marketplace</a>
+            <a href="/educationalresources" class="nav-item nav-link">Training & Resources</a>
+            <a href="/projectfunding" class="nav-item nav-link">Projects & Funding</a>
+            @if (User.IsInRole("Farmer"))
+            {
+                <div class="nav-item dropdown active">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Farmer Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">My Products</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">My Profile</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Farmers</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">Manage Products</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Dashboard</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">Manage Employees</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5" style="background: linear-gradient(rgba(0, 103, 75, .9), rgba(0, 103, 75, .9)), url(/img/carousel-1.jpg) center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Farmer Dashboard</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="/Farmer/Products">My Products</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Add New Product</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container py-4">
+    <div class="farmer-container">
+        <!-- Sidebar Navigation -->
+        <div class="farmer-sidebar d-none d-lg-block">
+            <div class="sidebar-header">
+                <h4>
+                    <div class="farmer-avatar">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                    Farmer Portal
+                </h4>
+            </div>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Farmer/Products">
+                        <i class="fa fa-leaf"></i> My Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/Farmer/CreateProduct">
+                        <i class="fa fa-plus-circle"></i> Add New Product
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Farmer/Profile">
+                        <i class="fa fa-user"></i> My Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Marketplace">
+                        <i class="fa fa-store"></i> Marketplace
+                    </a>
+                </li>
+            </ul>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-
-                <form asp-action="CreateProduct" enctype="multipart/form-data" class="bg-white p-4 rounded shadow">
-                    <!-- Display validation summary prominently -->
+        <!-- Mobile Sidebar Navigation (for small screens) -->
+        <div class="d-lg-none mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        <a href="/Farmer/Products" class="list-group-item list-group-item-action">
+                            <i class="fa fa-leaf me-2"></i> My Products
+                        </a>
+                        <a href="/Farmer/CreateProduct" class="list-group-item list-group-item-action active">
+                            <i class="fa fa-plus-circle me-2"></i> Add New Product
+                        </a>
+                        <a href="/Farmer/Profile" class="list-group-item list-group-item-action">
+                            <i class="fa fa-user me-2"></i> My Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="farmer-content">
+            <!-- Page Title -->
+            <div class="page-title">
+                <h1>Add New Product</h1>
+                <p>Create and list your agricultural products</p>
+                <div class="page-divider"></div>
+            </div>
+            
+            <!-- Create Product Form -->
+            <div class="form-card">
+                <form asp-action="CreateProduct" enctype="multipart/form-data">
+                    <!-- Validation Summary -->
                     @if (!ViewData.ModelState.IsValid)
                     {
-                        <div class="alert alert-danger">
+                        <div class="alert-validation">
+                            <strong><i class="fa fa-exclamation-circle"></i> Please fix the following errors:</strong>
                             <div asp-validation-summary="All" class="text-danger"></div>
                         </div>
                     }
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Name" class="form-label"></label>
-                        <input asp-for="Name" class="form-control" required />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                    
+                    <!-- Product Information Section -->
+                    <div class="form-section">
+                        <h5 class="form-section-title">
+                            <i class="fa fa-info-circle"></i> Product Information
+                        </h5>
+                        
+                        <div class="form-group">
+                            <label asp-for="Name" class="form-label">
+                                <i class="fa fa-tag"></i> Product Name <span class="required-indicator">*</span>
+                            </label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter product name" required />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Description" class="form-label">
+                                <i class="fa fa-align-left"></i> Description <span class="required-indicator">*</span>
+                            </label>
+                            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Describe your product in detail" required></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Description" class="form-label"></label>
-                        <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                    
+                    <!-- Classification Section -->
+                    <div class="form-section">
+                        <h5 class="form-section-title">
+                            <i class="fa fa-sitemap"></i> Classification
+                        </h5>
+                        
+                        <div class="form-group">
+                            <label asp-for="Category" class="form-label">
+                                <i class="fa fa-folder"></i> Category <span class="required-indicator">*</span>
+                            </label>
+                            <select asp-for="Category" class="form-select" required>
+                                <option value="">Select a category</option>
+                                <option value="Solar Irrigation">Solar Irrigation Systems</option>
+                                <option value="Wind Turbines">Wind Turbines</option>
+                                <option value="Biogas Solutions">Biogas Energy Solutions</option>
+                                <option value="Solar Panels">Solar Panels</option>
+                                <option value="Energy Storage">Energy Storage Systems</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span asp-validation-for="Category" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="ProductionDate" class="form-label">
+                                <i class="fa fa-calendar-alt"></i> Production Date <span class="required-indicator">*</span>
+                            </label>
+                            <input asp-for="ProductionDate" class="form-control" type="date" required />
+                            <span asp-validation-for="ProductionDate" class="text-danger"></span>
+                        </div>
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Category" class="form-label"></label>
-                        <select asp-for="Category" class="form-select" required>
-                            <option value="">Select a category</option>
-                            <option value="Solar Irrigation">Solar Irrigation Systems</option>
-                            <option value="Wind Turbines">Wind Turbines</option>
-                            <option value="Biogas Solutions">Biogas Energy Solutions</option>
-                            <option value="Solar Panels">Solar Panels</option>
-                            <option value="Energy Storage">Energy Storage Systems</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <span asp-validation-for="Category" class="text-danger"></span>
+                    
+                    <!-- Media Section -->
+                    <div class="form-section">
+                        <h5 class="form-section-title">
+                            <i class="fa fa-image"></i> Product Media
+                        </h5>
+                        
+                        <div class="form-group">
+                            <label for="imageFile" class="form-label">
+                                <i class="fa fa-upload"></i> Product Image
+                            </label>
+                            <div class="file-input-container">
+                                <div class="file-input-button">
+                                    <i class="fa fa-cloud-upload-alt"></i> Choose File
+                                    <input type="file" name="imageFile" id="imageFile" accept="image/*" onchange="previewImage(this)" />
+                                </div>
+                                <span class="file-name" id="fileName">No file chosen</span>
+                            </div>
+                            <div class="form-text">Upload an image for your product (optional). Recommended size: 800x600 pixels.</div>
+                            
+                            <div class="image-preview-container" id="imagePreviewContainer">
+                                <img id="imagePreview" class="image-preview" src="#" alt="Image Preview" />
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="ProductionDate" class="form-label"></label>
-                        <input asp-for="ProductionDate" class="form-control" type="date" required />
-                        <span asp-validation-for="ProductionDate" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label for="imageFile" class="form-label">Product Image</label>
-                        <input type="file" name="imageFile" id="imageFile" class="form-control" accept="image/*" />
-                        <small class="text-muted">Upload an image for your product (optional)</small>
-                    </div>
-
-                    <div class="form-group d-flex justify-content-between mt-4">
-                        <a asp-action="Products" class="btn btn-secondary">Back to Products</a>
-                        <button type="submit" class="btn btn-primary">Create Product</button>
+                    
+                    <!-- Form Buttons -->
+                    <div class="form-buttons">
+                        <a asp-action="Products" class="btn btn-farmer-secondary">
+                            <i class="fa fa-arrow-left"></i> Back to Products
+                        </a>
+                        <button type="submit" class="btn btn-farmer-primary">
+                            <i class="fa fa-plus-circle"></i> Create Product
+                        </button>
                     </div>
                 </form>
             </div>
@@ -76,7 +609,24 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        // client-side validation to ensure required fields are filled
+        // Image preview functionality
+        function previewImage(input) {
+            var fileName = input.files[0] ? input.files[0].name : "No file chosen";
+            document.getElementById('fileName').textContent = fileName;
+            
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                    document.getElementById('imagePreviewContainer').style.display = 'block';
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        // Form validation
         $(document).ready(function () {
             $('form').submit(function (e) {
                 // Clear previous error messages

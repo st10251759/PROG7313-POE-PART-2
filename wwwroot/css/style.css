@@ -413,4 +413,224 @@
         margin-right: auto;
     }
 }
+
+/* Responsive Adjustments for Farmer Products Index */
+@media (max-width: 991px) {
+    .farmer-container {
+        flex-direction: column;
+    }
+
+    .farmer-sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .farmer-content {
+        width: 100%;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .product-actions {
+        flex-direction: column;
+    }
+}
+]
+/* Responsive Adjustments for Farmer CreateProduct Page */
+@media (max-width: 991px) {
+    .farmer-container
+
+{
+    flex-direction: column;
+}
+
+.farmer-sidebar {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 25px;
+}
+
+.farmer-content {
+    width: 100%;
+    padding: 0;
+}
+
+}
+
+@media (max-width: 768px) {
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .btn-farmer-secondary, .btn-farmer-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-section-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive Adjustments for Farmer DeleteProduct */
+@media (max-width: 991px) {
+    .farmer-container {
+        flex-direction: column;
+    }
+
+    .farmer-sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .farmer-content {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image-container {
+        margin-bottom: 30px;
+    }
+
+    .delete-card-header, .delete-card-body {
+        padding: 20px;
+    }
+
+        .delete-card-header h3 {
+            font-size: 1.25rem;
+        }
+
+    .form-buttons {
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .btn-farmer-secondary, .btn-farmer-danger {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .delete-card-header h3 {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* Responsive Adjustments for Farmer EditProduct Page*/
+@media (max-width: 991px) {
+    .farmer-container {
+        flex-direction: column;
+    }
+
+    .farmer-sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .farmer-content {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-card {
+        padding: 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .btn-farmer-secondary, .btn-farmer-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-section-title {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* Responsive Adjustments for Farmer Profile Page */
+@media (max-width: 991px) {
+    .farmer-container {
+        flex-direction: column;
+    }
+
+    .farmer-sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .farmer-content {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-card-title {
+        font-size: 1.2rem;
+    }
+
+    .btn-farmer-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title h1 {
+        font-size: 1.6rem;
+    }
 }
