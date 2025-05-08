@@ -162,7 +162,7 @@ namespace ST10251759_PROG7313_POE_PART_2.Controllers
             // Apply search filter
             if (!string.IsNullOrEmpty(searchString))
             {
-                productsQuery = productsQuery.Where(p => p.Name.Contains(searchString) || p.Description.Contains(searchString));
+                productsQuery = productsQuery.Where(p => p.Name.Contains(searchString) || p.Description.Contains(searchString) || p.User.Firstname.Contains(searchString) || p.User.Lastname.Contains(searchString) || p.User.Email.Contains(searchString));
             }
 
             var products = await productsQuery.ToListAsync();
