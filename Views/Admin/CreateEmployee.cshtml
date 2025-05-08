@@ -1,62 +1,598 @@
 ﻿<!-- Views/Admin/CreateEmployee.cshtml -->
 @model ST10251759_PROG7313_POE_PART_2.Models.RegisterEmployeeViewModel
-
 @{
     ViewData["Title"] = "Add New Employee";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Views/Admin/CreateEmployee.cshtml (continued) -->
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-            <h1 class="display-5">Add New Employee</h1>
-            <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+<style>
+    :root {
+        --primary: #00674b;
+        --secondary: #00AB66;
+        --tertiary: #00A693;
+        --accent: #34AD54;
+        --light: #F6FFF2;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --medium-gray: #e9ecef;
+        --dark-text: #343a40;
+    }
+
+    /* Admin Dashboard Layout */
+    .admin-container {
+        display: flex;
+        min-height: calc(100vh - 300px);
+    }
+
+    /* Sidebar Styles */
+    .admin-sidebar {
+        width: 280px;
+        background: linear-gradient(to bottom, var(--primary), var(--tertiary));
+        color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 103, 75, 0.2);
+        padding: 25px 0;
+        transition: all 0.3s ease;
+        margin-right: 25px;
+        overflow: hidden;
+    }
+
+    .sidebar-header {
+        padding: 0 20px 20px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .sidebar-header h4 {
+        margin: 0;
+        color: var(--white);
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar-header .admin-avatar {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 1.8rem;
+        color: var(--primary);
+    }
+
+    .nav-pills .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+        padding: 12px 20px;
+        border-radius: 0;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        margin: 2px 0;
+    }
+
+    .nav-pills .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+    }
+
+    .nav-pills .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        border-left: 4px solid var(--white);
+    }
+
+    .nav-pills .nav-link i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+        width: 24px;
+        text-align: center;
+    }
+
+    /* Main Content Area */
+    .admin-content {
+        flex: 1;
+        padding: 0 15px;
+        width: calc(100% - 280px);
+    }
+
+    /* Page Title */
+    .page-title {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .page-title h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .page-title p {
+        color: #6c757d;
+        margin-bottom: 0;
+    }
+
+    .page-divider {
+        height: 4px;
+        width: 60px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        margin-bottom: 25px;
+        border-radius: 2px;
+    }
+
+    /* Form Card */
+    .form-card {
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .form-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+
+    /* Form Sections */
+    .form-section {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .form-section-title {
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--medium-gray);
+        display: flex;
+        align-items: center;
+    }
+
+    .form-section-title i {
+        margin-right: 10px;
+        color: var(--primary);
+        font-size: 1.1rem;
+    }
+
+    /* Form Elements */
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .form-label {
+        color: var(--dark-text);
+        font-weight: 500;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    .form-label i {
+        margin-right: 8px;
+        color: var(--primary);
+        font-size: 0.9rem;
+    }
+
+    .form-control, .form-select {
+        border: 1.5px solid #e1e1e1;
+        border-radius: 8px;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        background-color: var(--white);
+        color: var(--dark-text);
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 0.25rem rgba(0, 171, 102, 0.15);
+    }
+
+    .form-text {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+
+    .required-indicator {
+        color: #dc3545;
+        margin-left: 3px;
+    }
+
+    /* Password Strength Meter */
+    .password-strength-meter {
+        height: 6px;
+        background-color: var(--medium-gray);
+        margin-top: 10px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .password-strength-value {
+        height: 100%;
+        border-radius: 3px;
+        width: 0%;
+        transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    .strength-text {
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+
+    .strength-weak {
+        background-color: #dc3545;
+        width: 20%;
+    }
+
+    .strength-fair {
+        background-color: #ffc107;
+        width: 40%;
+    }
+
+    .strength-good {
+        background-color: #34AD54;
+        width: 70%;
+    }
+
+    .strength-strong {
+        background-color: #00AB66;
+        width: 100%;
+    }
+
+    /* Form Buttons */
+    .form-buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-admin-secondary {
+        background-color: #e9ecef;
+        color: var(--dark-text);
+        border: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-admin-secondary:hover {
+        background-color: #dee2e6;
+        transform: translateY(-2px);
+    }
+
+    .btn-admin-primary {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 103, 75, 0.2);
+    }
+
+    .btn-admin-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 103, 75, 0.3);
+        color: white;
+    }
+
+    .btn-admin-primary i, .btn-admin-secondary i {
+        margin-right: 8px;
+    }
+
+    /* Alert Validation */
+    .alert-validation {
+        background-color: #fff8f8;
+        border-left: 4px solid #dc3545;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .alert-validation ul {
+        margin-bottom: 0;
+        padding-left: 20px;
+    }
+
+    .alert-validation li {
+        margin-bottom: 5px;
+    }
+
+    /* Password Toggle */
+    .password-field-container {
+        position: relative;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 5;
+        color: #8a8a8a;
+        transition: all 0.3s ease;
+    }
+
+    .password-toggle:hover {
+        color: var(--primary);
+    }
+
+
+</style>
+
+<!-- Topbar Start -->
+<div class="container-fluid px-5 d-none d-lg-block">
+    <div class="row gx-5 py-3 align-items-center">
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-start">
+                <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
+                <h2 class="mb-0">+031 123 6789</h2>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="index.html" class="navbar-brand ms-lg-5">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Agri-Energy</span>Connect</h1>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="d-flex align-items-center justify-content-end">
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none">
+        <h1 class="m-0 display-4 text-secondary"><span class="text-white">Agri</span>Energy</h1>
+    </a>ccc
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav py-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/contact" class="nav-item nav-link">Contact</a>
+            <a href="/farminghub" class="nav-item nav-link">Farming Hub</a>
+            <a href="/marketplace" class="nav-item nav-link">Energy Marketplace</a>
+            <a href="/educationalresources" class="nav-item nav-link">Training & Resources</a>
+            <a href="/projectfunding" class="nav-item nav-link">Projects & Funding</a>
+            @if (User.IsInRole("Farmer"))
+            {
+                <div class="nav-item dropdown active">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Farmer Portal</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Farmer/Products" class="dropdown-item">My Products</a>
+                        <a href="/Farmer/Profile" class="dropdown-item">My Profile</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Employee"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Portal</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Employee/Products" class="dropdown-item">Manage Products</a>
+                        <a href="/Employee/Farmers" class="dropdown-item">Manage Farmers</a>
+                    </div>
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Portal</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/Admin/Employees" class="dropdown-item">Manage Employees</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5" style="background: linear-gradient(rgba(0, 103, 75, .9), rgba(0, 103, 75, .9)), url(/img/carousel-1.jpg) center center no-repeat; background-size: cover;">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Admin Dashboard</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="/Admin/Employees">Employees</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Add New Employee</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container py-4">
+    <div class="admin-container">
+        <!-- Sidebar Navigation -->
+        <div class="admin-sidebar d-none d-lg-block">
+            <div class="sidebar-header">
+                <h4>
+                    <div class="admin-avatar">
+                        <i class="fa fa-user-shield"></i>
+                    </div>
+                    Admin Portal
+                </h4>
+            </div>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Employees">
+                        <i class="fa fa-users-cog"></i> Employees
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/Admin/CreateEmployee">
+                        <i class="fa fa-user-plus"></i> Add New Employee
+                    </a>
+                </li>              
+            </ul>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <form asp-action="CreateEmployee" class="bg-white p-4 rounded shadow">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <label asp-for="Firstname" class="form-label"></label>
-                                <input asp-for="Firstname" class="form-control" />
-                                <span asp-validation-for="Firstname" class="text-danger"></span>
+        <!-- Mobile Sidebar Navigation (for small screens) -->
+        <div class="d-lg-none mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        <a href="/Admin/Employees" class="list-group-item list-group-item-action">
+                            <i class="fa fa-users-cog me-2"></i> Employees
+                        </a>
+                        <a href="/Admin/CreateEmployee" class="list-group-item list-group-item-action active">
+                            <i class="fa fa-user-plus me-2"></i> Add New Employee
+                        </a>
+                        <a href="/Admin/SystemSettings" class="list-group-item list-group-item-action">
+                            <i class="fa fa-cogs me-2"></i> System Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="admin-content">
+            <!-- Page Title -->
+            <div class="page-title">
+                <h1>Add New Employee</h1>
+                <p>Create a new employee account with administrative access</p>
+                <div class="page-divider"></div>
+            </div>
+            
+            <!-- Form Card -->
+            <div class="form-card">
+                <form asp-action="CreateEmployee">
+                    <!-- Validation Summary -->
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert-validation">
+                            <strong><i class="fa fa-exclamation-circle"></i> Please fix the following errors:</strong>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        </div>
+                    }
+                    
+                    <!-- Personal Information Section -->
+                    <div class="form-section">
+                        <h5 class="form-section-title">
+                            <i class="fa fa-user"></i> Personal Information
+                        </h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Firstname" class="form-label">
+                                        <i class="fa fa-user"></i> First Name <span class="required-indicator">*</span>
+                                    </label>
+                                    <input asp-for="Firstname" class="form-control" placeholder="Enter first name" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Lastname" class="form-label">
+                                        <i class="fa fa-user"></i> Last Name <span class="required-indicator">*</span>
+                                    </label>
+                                    <input asp-for="Lastname" class="form-control" placeholder="Enter last name" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <label asp-for="Lastname" class="form-label"></label>
-                                <input asp-for="Lastname" class="form-control" />
-                                <span asp-validation-for="Lastname" class="text-danger"></span>
-                            </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="Email" class="form-label">
+                                <i class="fa fa-envelope"></i> Email Address <span class="required-indicator">*</span>
+                            </label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Email" class="form-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                    
+                    <!-- Account Security Section -->
+                    <div class="form-section">
+                        <h5 class="form-section-title">
+                            <i class="fa fa-lock"></i> Account Security
+                        </h5>
+                        
+                        <div class="form-group">
+                            <label asp-for="Password" class="form-label">
+                                <i class="fa fa-key"></i> Password <span class="required-indicator">*</span>
+                            </label>
+                            <div class="password-field-container">
+                                <input asp-for="Password" class="form-control" id="password-field" type="password" placeholder="Enter password" />
+                                <span class="password-toggle" onclick="togglePasswordVisibility('password-field', 'password-toggle-icon')">
+                                    <i class="fa fa-eye" id="password-toggle-icon"></i>
+                                </span>
+                            </div>
+                            <div class="password-strength-meter mt-2">
+                                <div class="password-strength-value" id="passwordStrengthMeter"></div>
+                            </div>
+                            <div class="strength-text" id="passwordStrengthText">Password strength</div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="form-label">
+                                <i class="fa fa-check-circle"></i> Confirm Password <span class="required-indicator">*</span>
+                            </label>
+                            <div class="password-field-container">
+                                <input asp-for="ConfirmPassword" class="form-control" id="confirm-password-field" type="password" placeholder="Confirm password" />
+                                <span class="password-toggle" onclick="togglePasswordVisibility('confirm-password-field', 'confirm-password-toggle-icon')">
+                                    <i class="fa fa-eye" id="confirm-password-toggle-icon"></i>
+                                </span>
+                            </div>
+                            <div class="form-text" id="passwordMatchMessage"></div>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="fa fa-info-circle me-2"></i> New employees will have access to manage farmers and products in the system.
+                        </div>
                     </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="ConfirmPassword" class="form-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group d-flex justify-content-between mt-4">
-                        <a asp-action="Employees" class="btn btn-secondary">Back to Employees</a>
-                        <button type="submit" class="btn btn-primary">Create Employee</button>
+                    
+                    <!-- Form Buttons -->
+                    <div class="form-buttons">
+                        <a asp-action="Employees" class="btn btn-admin-secondary">
+                            <i class="fa fa-arrow-left"></i> Back to Employees
+                        </a>
+                        <button type="submit" class="btn btn-admin-primary">
+                            <i class="fa fa-user-plus"></i> Create Employee
+                        </button>
                     </div>
                 </form>
             </div>
@@ -68,4 +604,119 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        // Function to toggle password visibility
+        function togglePasswordVisibility(fieldId, iconId) {
+            const passwordField = document.getElementById(fieldId);
+            const passwordToggleIcon = document.getElementById(iconId);
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordToggleIcon.classList.remove('fa-eye');
+                passwordToggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passwordToggleIcon.classList.remove('fa-eye-slash');
+                passwordToggleIcon.classList.add('fa-eye');
+            }
+        }
+        
+        // Password strength checker
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordField = document.getElementById('password-field');
+            const confirmPasswordField = document.getElementById('confirm-password-field');
+            const passwordStrengthMeter = document.getElementById('passwordStrengthMeter');
+            const passwordStrengthText = document.getElementById('passwordStrengthText');
+            const passwordMatchMessage = document.getElementById('passwordMatchMessage');
+            
+            // Check password strength
+            passwordField.addEventListener('input', function() {
+                const password = this.value;
+                let strength = 0;
+                
+                // Reset strength meter
+                passwordStrengthMeter.className = 'password-strength-value';
+                
+                if (password.length === 0) {
+                    passwordStrengthMeter.style.width = '0%';
+                    passwordStrengthText.textContent = 'Password strength';
+                    passwordStrengthText.style.color = '#6c757d';
+                    return;
+                }
+                
+                // Length check
+                if (password.length >= 8) {
+                    strength += 1;
+                }
+                
+                // Uppercase check
+                if (password.match(/[A-Z]/)) {
+                    strength += 1;
+                }
+                
+                // Lowercase check
+                if (password.match(/[a-z]/)) {
+                    strength += 1;
+                }
+                
+                // Number check
+                if (password.match(/[0-9]/)) {
+                    strength += 1;
+                }
+                
+                // Special character check
+                if (password.match(/[^a-zA-Z0-9]/)) {
+                    strength += 1;
+                }
+                
+                // Update strength meter
+                if (strength <= 1) {
+                    passwordStrengthMeter.classList.add('strength-weak');
+                    passwordStrengthText.textContent = 'Weak';
+                    passwordStrengthText.style.color = '#dc3545';
+                } 
+                else if (strength <= 2) {
+                    passwordStrengthMeter.classList.add('strength-fair');
+                    passwordStrengthText.textContent = 'Fair';
+                    passwordStrengthText.style.color = '#ffc107';
+                }
+                else if (strength <= 3) {
+                    passwordStrengthMeter.classList.add('strength-good');
+                    passwordStrengthText.textContent = 'Good';
+                    passwordStrengthText.style.color = '#34AD54';
+                }
+                else {
+                    passwordStrengthMeter.classList.add('strength-strong');
+                    passwordStrengthText.textContent = 'Strong';
+                    passwordStrengthText.style.color = '#00AB66';
+                }
+                
+                // Check if passwords match (if confirm field has content)
+                if (confirmPasswordField.value.length > 0) {
+                    checkPasswordsMatch();
+                }
+            });
+            
+            // Check if passwords match
+            confirmPasswordField.addEventListener('input', checkPasswordsMatch);
+            
+            function checkPasswordsMatch() {
+                const password = passwordField.value;
+                const confirmPassword = confirmPasswordField.value;
+                
+                if (confirmPassword.length === 0) {
+                    passwordMatchMessage.textContent = '';
+                    return;
+                }
+                
+                if (password === confirmPassword) {
+                    passwordMatchMessage.textContent = 'Passwords match';
+                    passwordMatchMessage.style.color = '#00AB66';
+                } else {
+                    passwordMatchMessage.textContent = 'Passwords do not match';
+                    passwordMatchMessage.style.color = '#dc3545';
+                }
+            }
+        });
+    </script>
 }
