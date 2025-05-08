@@ -305,3 +305,112 @@
         margin-top: 90px !important;
     }
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 991px) {
+    .login-container {
+        padding: 3rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        margin: 1rem;
+    }
+
+    .login-header {
+        padding: 2rem;
+    }
+
+        .login-header h1 {
+            font-size: 1.8rem;
+        }
+
+    .login-body {
+        padding: 2rem;
+    }
+
+    .logo-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .logo-rings {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* Tablet Optimizations */
+@media (max-width: 991px) and (min-width: 769px) {
+    .login-card {
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Mobile Phone Adjustments */
+@media (max-width: 576px) {
+    .login-header {
+        padding: 1.5rem;
+    }
+
+        .login-header h1 {
+            font-size: 1.5rem;
+        }
+
+    .login-section-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .login-body {
+        padding: 1.2rem;
+    }
+
+    .logo-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+        .logo-icon i {
+            font-size: 2rem;
+        }
+
+    .logo-rings {
+        width: 100px;
+        height: 100px;
+    }
+
+    .btn-login-primary {
+        padding: 0.8rem 1.8rem;
+    }
+
+    .form-floating {
+        margin-bottom: 1rem;
+    }
+
+    .form-check-label, .forgot-password-link a {
+        font-size: 0.85rem;
+    }
+
+    .security-badge {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+}
+
+/* High Resolution Displays */
+@media (min-width: 1400px) {
+    .login-container {
+        max-width: 1400px;
+    }
+
+    .login-card {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+}

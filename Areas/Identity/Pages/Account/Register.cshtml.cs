@@ -24,6 +24,7 @@ using ST10251759_PROG7313_POE_PART_2.Models;
 
 namespace ST10251759_PROG7313_POE_PART_2.Areas.Identity.Pages.Account
 {
+    [Authorize(Roles = "Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
