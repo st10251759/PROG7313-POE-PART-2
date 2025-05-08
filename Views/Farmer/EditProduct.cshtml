@@ -421,7 +421,7 @@
             @if (User.IsInRole("Farmer"))
             {
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Farmer Dashboard</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Farmer Portal</a>
                     <div class="dropdown-menu m-0">
                         <a href="/Farmer/Products" class="dropdown-item">My Products</a>
                         <a href="/Farmer/Profile" class="dropdown-item">My Profile</a>
@@ -431,19 +431,19 @@
             @if (User.IsInRole("Employee"))
             {
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Dashboard</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Employee Portal</a>
                     <div class="dropdown-menu m-0">
-                        <a href="/Farmer/Products" class="dropdown-item">Manage Farmers</a>
-                        <a href="/Farmer/Profile" class="dropdown-item">Manage Products</a>
+                        <a href="/Employee/Farmers" class="dropdown-item">Manage Farmers</a>
+                        <a href="/Employee/Products" class="dropdown-item">Manage Products</a>
                     </div>
                 </div>
             }
             @if (User.IsInRole("Admin"))
             {
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Dashboard</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin Portal</a>
                     <div class="dropdown-menu m-0">
-                        <a href="/Farmer/Products" class="dropdown-item">Manage Employees</a>
+                        <a href="/Admin/Employees" class="dropdown-item">Manage Employees</a>
                     </div>
                 </div>
             }
