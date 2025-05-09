@@ -609,7 +609,7 @@
     }
 
     .farmer-content {
-        width: 100%;
+        width: 100% !important;
         padding: 0;
     }
 }
@@ -866,7 +866,7 @@
     }
 
     .employee-content {
-        width: 100%;
+        width: 100% !important;
         padding: 0;
     }
 }
@@ -919,7 +919,7 @@
     }
 
     .admin-content {
-        width: 100%;
+        width: 100% !important;
         padding: 0;
     }
 
