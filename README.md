@@ -27,6 +27,7 @@
   - [Farmers](#farmers)
   - [Employees](#employees)
   - [Admins](#admins)
+- [Testing Credentials](#testing-Credentials)
 - [Assumptions of Usage](#assumptions-of-usage)
 - [Future Requirements](#future-requirements)
 - [Code Attribution](#code-attribution)
@@ -43,7 +44,7 @@ The platform serves as a central hub where farmers can showcase their green ener
 The repository contains the following key components:
 
 - **ASP.NET Core Web Application** - Complete source code for the application
-- **Database Scripts** - SQL Server scripts for database creation and seeding
+- **Database Script and BK file** - SQL Server scripts for database creation and seeding as well as a database backup file
 - **Documentation** - Comprehensive documentation including this README file
 - **Images and Static Resources** - All images and static resources used in the application
 
@@ -131,29 +132,73 @@ After restoring the database, update the connection string in the `appsettings.j
 - Knowledge sharing on water conservation and soil health
 - Interactive forums for collaboration
 
+<p align="center">
+  <img src="/Screenshot-Sustainable-Farming-Hub.png" alt="Sustainable Farming Hub" width="800" height="400"/>
+</p>
+
 ### 2. Green Energy Marketplace
 - Platform for showcasing green energy solutions
 - Product listings for solar irrigation, wind turbines, and biogas energy solutions
 - Product comparison and review capabilities
 
-### 3. User Role Management
+<p align="center">
+  <img src="/Screenshot-Green-Energy-Marketplace.png" alt="Green Energy Marketplace" width="800" height="400"/>
+</p>
+
+### 3. Educational and Training Resources
+- Platform for providing Online courses, webinars, and workshops on integrating 
+  green energy technologies in 
+  agriculture
+- Provides Users with learning material focusing on the benefits and practicalities 
+  of adopting renewable energy sources on farms
+
+<p align="center">
+  <img src="/Screenshot-Training-Resources.png" alt="Educational and Training Resources" width="800" height="400"/>
+</p>
+
+### 4. Project Collaboration and Funding Opportunities
+- Platform for farmers and energy experts to propose and collaborate on joint 
+  projects.
+- Provides information on grants, subsidies, and funding opportunities for green initiatives in agriculture.
+
+<p align="center">
+  <img src="/Screenshot-Project-Collab.png" alt="Project Collaboration and Funding Opportunities Resources" width="800" height="400"/>
+</p>
+
+### 5. User Role Management
 - Three distinct user roles (Farmer, Employee, Admin)
 - Role-based access control
 - Secure authentication system
 
-### 4. Product Management
+<p align="center">
+  <img src="/Screenshot-Access-Denied.png" alt="Access denied" width="800" height="400"/>
+</p>
+
+### 6. Product Management
 - Detailed product listings with images
 - Categorization system
 - Search and filter functionality
 
-### 5. Farmer Profile Management
+<p align="center">
+  <img src="/Screenshot-Product-Managemet.png" alt="Product Management" width="800" height="400"/>
+</p>
+
+### 7. Farmer Profile Management
 - Comprehensive farmer profiles
 - Location and contact information
 - Product portfolio management
 
+<p align="center">
+  <img src="/Screenshot-Farmer-Profile.png" alt="Farmer Profile Management" width="800" height="400"/>
+</p>
+
 ## Functionality and App Usage
 
 ### User Roles and Access
+
+<p align="center">
+  <img src="/Screenshot-Login.png" alt="Login" width="800" height="400"/>
+</p>
 
 #### Farmers
 Farmers have access to:
@@ -215,6 +260,19 @@ Admins have access to:
 - Create new employee accounts using the "Add Employee" form
 - Delete employee accounts as needed
 
+## Testing Credentials
+### Farmer
+- **Email Address:** sipho.dlamini@example.com
+- **Password:** Password@123
+
+### Employee
+- **Email Address:** rajesh.reddy@example.com
+- **Password:** Password@123
+
+### Admin
+- **Email Address:** admin@gmail.com
+- **Password:** Password@123
+
 ## Assumptions of Usage
 
 1. **Internet Access**: Users have consistent internet access to use the web application.
@@ -271,6 +329,21 @@ Admins have access to:
 - **CSS Resources:**
   - Author: w3schools
   - Link: [CSS Tutorial](https://www.w3schools.com/css/)
+  - Date Accessed: 08 May 2025
+
+- **JQuery Resources:**
+  - Author: w3schools
+  - Link: [JQuery Tutorial](https://www.w3schools.com/jquery/default.asp)
+  - Date Accessed: 08 May 2025
+
+- **JavaScript Resources:**
+  - Author: w3schools
+  - Link: [JavaScript Tutorial](https://www.w3schools.com/js/DEFAULT.asp)
+  - Date Accessed: 08 May 2025
+
+- **REGEX Validation Resources:**
+  - Author: Tyler Woodward
+  - Link: [Phone Validation Regex: The What, How, and Pros and Cons](https://trestleiq.com/phone-validation-regex-the-what-how-and-pros-and-cons/)
   - Date Accessed: 08 May 2025
 
 - **Database Implementation:**
