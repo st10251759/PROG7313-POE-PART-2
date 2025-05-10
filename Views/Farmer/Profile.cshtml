@@ -511,7 +511,9 @@
                         <label asp-for="PhoneNumber" class="form-label">
                             <i class="fa fa-phone"></i> Contact Number
                         </label>
-                        <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your contact number" />
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your contact number"
+                               pattern="^\d{10}$" minlength="10" maxlength="10"
+                               title="Please enter a 10-digit phone number (e.g. 0123456789)" required />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     
@@ -676,6 +678,19 @@
                     $(this).get(0).setCustomValidity("");
                 }
             });
+        });
+    </script>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            const phoneInput = document.querySelector("[name='PhoneNumber']");
+            const phonePattern = /^\d{10}$/;
+
+            if (!phonePattern.test(phoneInput.value)) {
+                e.preventDefault();
+                alert("Please enter a valid 10-digit phone number (e.g. 0123456789).");
+                phoneInput.focus();
+            }
         });
     </script>
 }

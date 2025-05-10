@@ -44,6 +44,22 @@ Github repo link: https://github.com/st10251759/PROG7313-POE-PART-2
  Link: https://www.aurigma.com/upload-suite/developers/aspnet-mvc/how-to-upload-files-in-aspnet-mvc
  Date Accessed: 08 May 2025
 
+ JavaScript
+ Author: w3schools
+ Link: https://www.w3schools.com/js/DEFAULT.asp
+ Date Accessed: 08 May 2025
+
+ JQuery
+ Author: w3schools
+ Link: https://www.w3schools.com/jquery/default.asp
+ Date Accessed: 08 May 2025
+
+ Regex Phone Number Validation
+ Author: w3schools
+ Link: https://www.w3schools.com/jquery/default.asp
+ Date Accessed: 08 May 2025
+
+
 ==============================Code Attribution==================================
 
 */
