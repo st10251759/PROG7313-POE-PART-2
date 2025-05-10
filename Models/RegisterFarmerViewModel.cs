@@ -60,10 +60,9 @@ namespace ST10251759_PROG7313_POE_PART_2.Models
 
         // Stores the farmer's phone number.
         // Required for contact purposes.
-        // Validated with [Phone] to ensure a valid phone number format is provided.
-        [Required]
-        [Phone]
-        [Display(Name = "Phone Number")]
+        // Validated to ensure a valid phone of 10 digits number format is provided.
+        [Required(ErrorMessage = "Phone number is required.")]
+        [RegularExpression(@"^0\d{9}$", ErrorMessage = "Phone number must be 10 digits and start with 0.")]
         public string PhoneNumber { get; set; }
 
         // Stores the physical or geographical location of the farmer (e.g., farm location or residence).

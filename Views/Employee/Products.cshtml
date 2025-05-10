@@ -653,8 +653,34 @@
                             }
                         </select>
                     </div>
-                    
+
                     <div class="col-md-3">
+                        <label class="form-label">
+                            <i class="fa fa-user"></i> Farmer
+                        </label>
+
+                        @if (ViewBag.Farmers != null && ViewBag.Farmers.Count > 0)
+                        {
+                            <select name="farmerId" class="form-select">
+                                <option value="">All Farmers</option>
+                                @foreach (var farmer in ViewBag.Farmers)
+                                {
+                                    <option value="@farmer.Id" selected="@(ViewBag.FarmerId == farmer.Id)">
+                                        @(farmer.Firstname + " " + farmer.Lastname)
+                                    </option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning p-2 mt-1">
+                                No farmers available.
+                            </div>
+                        }
+                    </div>
+
+                    
+                    <div class="col-md-6">
                         <label class="form-label">
                             <i class="fa fa-search"></i> Search
                         </label>

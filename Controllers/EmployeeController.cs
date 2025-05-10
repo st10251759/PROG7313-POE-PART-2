@@ -194,7 +194,7 @@ namespace ST10251759_PROG7313_POE_PART_2.Controllers
         }
 
         // Display list of products with filtering options
-        public async Task<IActionResult> Products(DateTime? fromDate, DateTime? toDate, string category, string searchString)
+        public async Task<IActionResult> Products(DateTime? fromDate, DateTime? toDate, string category, string farmerId, string searchString)
         {
             // Start building the query with included User reference
             var productsQuery = _context.Products.Include(p => p.User).AsQueryable();
@@ -216,6 +216,22 @@ namespace ST10251759_PROG7313_POE_PART_2.Controllers
                 productsQuery = productsQuery.Where(p => p.Category == category);
             }
 
+            // Apply Farmer filter
+            if (!string.IsNullOrEmpty(farmerId))
+                productsQuery = productsQuery.Where(p => p.UserId == farmerId);
+
+            // List of farmers (with role "Farmer")
+            var farmerRoleId = _context.Roles.FirstOrDefault(r => r.Name == "Farmer")?.Id;
+            var farmerIds = _context.UserRoles
+                .Where(ur => ur.RoleId == farmerRoleId)
+                .Select(ur => ur.UserId)
+                .ToList();
+
+            // Get the ApplicationUser objects for all farmers - this is what's missing
+            var farmers = await _context.ApplicationUsers
+                .Where(u => farmerIds.Contains(u.Id))
+                .ToListAsync();
+
             // Apply full-text search on product and user details
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -235,6 +251,8 @@ namespace ST10251759_PROG7313_POE_PART_2.Controllers
             ViewBag.FromDate = fromDate;
             ViewBag.ToDate = toDate;
             ViewBag.Category = category;
+            ViewBag.FarmerId = farmerId;
+            ViewBag.Farmers = farmers;
             ViewBag.SearchString = searchString;
 
             return View(products);
