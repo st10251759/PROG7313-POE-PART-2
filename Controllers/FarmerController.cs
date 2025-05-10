@@ -55,8 +55,8 @@ Github repo link: https://github.com/st10251759/PROG7313-POE-PART-2
  Date Accessed: 08 May 2025
 
  Regex Phone Number Validation
- Author: w3schools
- Link: https://www.w3schools.com/jquery/default.asp
+ Author: Tyler Woodward
+ Link: https://trestleiq.com/phone-validation-regex-the-what-how-and-pros-and-cons/
  Date Accessed: 08 May 2025
 
 
