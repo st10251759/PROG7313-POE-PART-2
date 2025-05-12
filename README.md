@@ -431,3 +431,7 @@ For support or questions, contact me at:
 - 📞 +27 81 262 5090
 
 © 2025 Agri-Energy Connect. All Rights Reserved.
+
+---
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
