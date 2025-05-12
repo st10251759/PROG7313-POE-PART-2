@@ -21,13 +21,15 @@
   - [Design Approach](#design-approach)
   - [Cloning the Project](#cloning-the-project)
   - [Restoring the Database](#restoring-the-database)
+- [Architecture and Design Pattern](#architecture-and-design-pattern)
+- [Database Implementation](database-implementation)
 - [Key Features](#key-features)
 - [Functionality and App Usage](#functionality-and-app-usage)
   - [User Roles and Access](#user-roles-and-access)
   - [Farmers](#farmers)
   - [Employees](#employees)
   - [Admins](#admins)
-- [Testing Credentials](#testing-Credentials)
+- [Testing Credentials](#testing-credentials)
 - [Assumptions of Usage](#assumptions-of-usage)
 - [Future Requirements](#future-requirements)
 - [Code Attribution](#code-attribution)
@@ -124,6 +126,45 @@ git clone https://github.com/st10251759/PROG7313-POE-PART-2.git
 6. Verify that the database has been created successfully
 
 After restoring the database, update the connection string in the `appsettings.json` file to point to your local SQL Server instance.
+
+## Architecture and Design Pattern
+
+### Model-View-Controller (MVC)
+
+Agri-Energy Connect employs the **Model-View-Controller (MVC)** pattern as its architectural foundation, providing a clean separation of concerns:
+
+- **Models:** Handle data structures and business logic (e.g., `ApplicationUser`, `Product`)
+- **Views:** Present information to users with role-specific organization (e.g., `/Views/Farmer/`, `/Views/Admin/`)
+- **Controllers:** Manage user input and application flow (e.g., `FarmerController`, `EmployeeController`)
+
+This approach enables straightforward routing and consistent handling of user interactions based on roles.
+
+### Layered Architecture
+
+The application follows a **3-Tier Layered Architecture** for improved maintainability:
+
+- **Presentation Layer:** User interface components and views
+- **Business Logic Layer:** Controllers and services handling application operations
+- **Data Access Layer:** Entity Framework and `DbContext` managing database operations
+
+This separation of concerns allows changes in one layer to occur without disrupting others. For example, all database operations are isolated in the `Prog7311DbContext` class, while validation logic remains in the business layer. This organization made it simpler to implement features like role-based access and user management while keeping the codebase organized and adaptable.
+
+## Database Implementation
+
+### SQL Server and Entity Framework Core
+
+Agri-Energy Connect uses **SQL Server Management Studio (SSMS)** as its database engine, connected through **Entity Framework Core**. This combination was selected for:
+
+- **Reliability:** Stable performance for handling multiple concurrent users
+- **Structured storage:** Efficient organization of relational data (Users, Products, Roles, Categories)
+- **ASP.NET integration:** Seamless compatibility with the application framework
+
+Entity Framework Core serves as the ORM (Object-Relational Mapper), allowing:
+- Code-first migrations
+- Automated data validation
+- Reduced need for manual SQL queries
+
+The database schema is designed to support scalability, with the `Prog7311DbContext` class acting as the bridge between application code and data storage. This implementation ensures data integrity while maintaining security for sensitive user information, and provides a straightforward workflow for future enhancements and expansions.
 
 ## Key Features
 
