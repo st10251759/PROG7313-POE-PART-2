@@ -29,7 +29,6 @@
   - [Farmers](#farmers)
   - [Employees](#employees)
   - [Admins](#admins)
-- [Testing Credentials](#testing-credentials)
 - [Assumptions of Usage](#assumptions-of-usage)
 - [Future Requirements](#future-requirements)
 - [Code Attribution](#code-attribution)
@@ -105,6 +104,8 @@ git clone https://github.com/st10251759/PROG7313-POE-PART-2.git
 
 ### Restoring the Database
 
+You can choose between these two methods to restore the database.
+
 #### Method 1: Using the Backup (.bak) File
 
 1. Open SQL Server Management Studio (SSMS)
@@ -125,7 +126,21 @@ git clone https://github.com/st10251759/PROG7313-POE-PART-2.git
 5. Execute the script to create and populate the database
 6. Verify that the database has been created successfully
 
-After restoring the database, update the connection string in the `appsettings.json` file to point to your local SQL Server instance.
+#### Updating Your Connection String
+
+After restoring the database, you'll need to tell the application where to find it:
+
+1. Open the project in Visual Studio
+2. Find the `appsettings.json` file in the Solution Explorer
+3. Locate the "ConnectionStrings" section
+4. Update the connection string to match your SQL Server details:
+   <pre> ```json { "ConnectionStrings": { "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=Prog7311Db;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True" } } 
+   ``` </pre>
+
+5. Replace `YOUR_SERVER_NAME` with your local SQL Server name (typically your computer name followed by `\SQLEXPRESS` or `\MSSQLSERVER`)
+6. Save the file
+
+> **Tip for beginners**: To find your server name, open SQL Server Management Studio. The server name you used to connect will be shown in the "Connect to Server" dialog or at the top of Object Explorer.
 
 ## Architecture and Design Pattern
 
@@ -233,86 +248,142 @@ The database schema is designed to support scalability, with the `Prog7311DbCont
   <img src="/Screenshot-Farmer-Profile.png" alt="Farmer Profile Management" width="800" height="400"/>
 </p>
 
-## Functionality and App Usage
+## How to Use Agri-Energy Connect
 
-### User Roles and Access
+Our platform provides different features based on your role. Below is a guide on navigating and using the system effectively.
+
+### User Roles at a Glance
+Users can login through the login page accessed in the Navigation Bar.
 
 <p align="center">
   <img src="/Screenshot-Login.png" alt="Login" width="800" height="400"/>
 </p>
 
-#### Farmers
-Farmers have access to:
-- View their own product listings
-- Add new products to their profile
-- Update existing product details
-- Remove products they've created
-- Manage their personal profile
+This is a table showing what user has access to do withing this application.
 
-#### Employees
-Employees have access to:
-- View all farmer profiles
-- Add new farmer profiles
-- Remove farmers from the system
-- View and filter all products from any farmer
-- Search for specific products
+<table>
+  <tr>
+    <th align="center">Farmer</th>
+    <th align="center">Employee</th>
+    <th align="center">Admin</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <li>Manage personal products</li>
+        <li>Update profile information</li>
+        <li>Upload product images</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Manage all farmers</li>
+        <li>View all marketplace products</li>
+        <li>Filter and search listings</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>Manage employee accounts</li>
+        <li>System administration</li>
+        <li>Platform oversight</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-#### Admins
-Admins have access to:
-- View all employee profiles
-- Create new employee accounts
-- Delete employee accounts
-- Overall system management
+### Farmer User Guide
 
-### Farmers
+<details>
+  <summary><b>📦 Managing Your Products</b></summary>
+  <br>
+  <b>View Your Products:</b>
+  <ol>
+    <li>Log in with your farmer credentials</li>
+    <li>Access Farmer Dashboard links and click "My Products" in the top navigation</li>
+    <li>Browse your current product listings</li>
+  </ol>
+  <b>Add New Products:</b>
+  <ol>
+    <li>From "My Products," click the "Add New Product" button</li>
+    <li>Complete all required fields (name, description, category, etc.)</li>
+    <li>Upload a high-quality product image</li>
+    <li>Click "Submit" to publish your listing</li>
+  </ol>
+</details>
 
-**Viewing Products:**
-- Login to your account
-- Navigate to "My Products" to see all your listed products
-- Click on a product to view its details
+<details>
+  <summary><b>👤 Managing Your Profile</b></summary>
+  <br>
+  <ol>
+    <li>Click "My Profile" in the navigation menu</li>
+    <li>Update your contact information and location</li>
+    <li>Change your password if needed</li>
+    <li>Click "Save Changes" to update</li>
+  </ol>
+</details>
 
-**Adding Products:**
-- Navigate to "Add Product"
-- Fill in required details (name, description, category, etc.)
-- Upload product image
-- Submit the form
+### Employee User Guide
 
-**Managing Profile:**
-- Navigate to "My Profile"
-- Update contact information, location, or password
-- Save changes
+<details>
+  <summary><b>👨‍🌾 Managing Farmers</b></summary>
+  <br>
+  <b>View Farmers:</b>
+  <ol>
+    <li>Login with Employee Credentials</li>
+    <li>Access the Employee Dashboard links in the top navigation bar</li>
+    <li>Navigate to the "Farmers" section</li>
+    <li>See all registered farmers in the system</li>
+  </ol>
+  <b>Add New Farmers:</b>
+  <ol>
+    <li>Click "Add New Farmer" button</li>
+    <li>Complete the registration form with all required details</li>
+    <li>Submit to create the new farmer account</li>
+  </ol>
+  <b>Remove Farmers:</b>
+  <ol>
+    <li>Locate the farmer in the list</li>
+    <li>Click the "Delete" button on their profile</li>
+    <li>Confirm deletion when prompted</li>
+  </ol>
+</details>
 
-### Employees
+<details>
+  <summary><b>🔍 Browsing Products</b></summary>
+  <br>
+  <ol>
+    <li>Go to "Products" in the main navigation</li>
+    <li>Use the search box to find specific products</li>
+    <li>Filter by category, farmer or date using the filter controls</li>
+    <li>View detailed product information by clicking on a listing</li>
+  </ol>
+</details>
 
-**Managing Farmers:**
-- View all farmers in the "Farmers" section
-- Add new farmers using the "Add Farmer" form
-- Remove farmers by clicking the "Delete" button on a farmer's profile
+### Admin User Guide
 
-**Viewing Products:**
-- Browse all products in the "Products" section
-- Use filters to narrow down by date range or category
-- Use the search bar to find specific products
-
-### Admins
-
-**Managing Employees:**
-- View all employees in the "Employees" section
-- Create new employee accounts using the "Add Employee" form
-- Delete employee accounts as needed
-
-## Testing Credentials
-### Farmer
-- **Email Address:** sipho.dlamini@example.com
-- **Password:** Password@123
-
-### Employee
-- **Email Address:** rajesh.reddy@example.com
-- **Password:** Password@123
-
-### Admin
-- **Email Address:** admin@gmail.com
-- **Password:** Password@123
+<details>
+  <summary><b>👥 Managing Employees</b></summary>
+  <br>
+  <b>View Employees:</b>
+  <ol>
+    <li>Access the "Employees" section in the Admin Portal</li>
+    <li>See all employee accounts in the system</li>
+  </ol>
+  <b>Add New Employees:</b>
+  <ol>
+    <li>Click "Add New Employee" button</li>
+    <li>Fill out the employee registration form</li>
+    <li>Set appropriate permissions</li>
+    <li>Submit to create the account</li>
+  </ol>
+  <b>Remove Employees:</b>
+  <ol>
+    <li>Find the employee in the list</li>
+    <li>Click the "Delete" button on their profile</li>
+    <li>Confirm deletion when prompted</li>
+  </ol>
+</details>
 
 ## Assumptions of Usage
 
@@ -340,7 +411,7 @@ Admins have access to:
    
 6. **AI Recommendations**: Implement AI-based product recommendations based on farming type and location.
 
-## Code Attribution
+## Code Attributions
 
 - **Microsoft Identity Integration:**
   - Author: Andy Malone MVP
