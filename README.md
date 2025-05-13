@@ -24,7 +24,7 @@
 - [Architecture and Design Pattern](#architecture-and-design-pattern)
 - [Database Implementation](database-implementation)
 - [Key Features](#key-features)
-- [Functionality and App Usage](#functionality-and-app-usage)
+- [How to Use Agri-Energy Connect](#how-to-use-agri-energy-connect)
   - [User Roles and Access](#user-roles-and-access)
   - [Farmers](#farmers)
   - [Employees](#employees)
