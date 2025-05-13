@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/yourusername/AgriEnergyConnect"><strong>View Repository »</strong></a>
+  <a href="https://github.com/st10251759/PROG7313-POE-PART-2"><strong>View Repository »</strong></a>
   <br>
-  <a href="https://youtube.com/your-demo-video">
+  <a href="https://youtu.be/oQuFbhntUWE">
     <img src="https://img.shields.io/badge/Watch%20on-YouTube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch video demo on YouTube">
   </a>
 </p>
